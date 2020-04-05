@@ -45,3 +45,6 @@ Sometimes its preferable to reuse certain validation logic that must be applied 
 Asynchronous behavior is supported by sending events that have promises as payload. The event will fire when the promise resolves or rejects. If another promise is fired for the same event name, before the previous promise could resolve, the new promise will replace the old one. Only the most recent promise fired for a specific event will be handed over to the event handler. Thus implicit debouncing behavior is implemented.
 
 If this behavior is not desired, the promise must be sent contained in an event, that's not an instance of `Promise`. The receiving event can then transition into a specific state before passing the promise itself on as payload. Thus it's possible to easily define a concise state in which the machine is remaining while waiting for an asynchronous operation to complete.
+
+
+[WHY CXSTATE](WHY-CXSTATE.md) · [EXAMPLES](EXAMPLES.md) · [API](docs) · [README](README.md)
