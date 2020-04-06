@@ -58,10 +58,10 @@ const [current, send] = useMachine<Context>(machine);
 send<DoEvent>('DO_SOMETHING', {value: 'a value'});
 
 // Conditional rendering if current state is '/state/path/a' or '/state/path/b'
-{ service.matchesOne('/state/path/a', '/state/path/b')) && <h1>{{ service.context().headerAOrB }}</h1> }
+{ current.matchesOne('/state/path/a', '/state/path/b')) && <h1>{{ current.context.headerAOrB }}</h1> }
 
 // Conditional rendering if current state is neither '/state/path/a' or '/state/path/b'
-{ service.matchesNone('/state/path/a', '/state/path/b')) && <h1>{{ service.context().neitherHeaderAOrB }}</h1> }
+{ current.matchesNone('/state/path/a', '/state/path/b')) && <h1>{{ current.context.neitherHeaderAOrB }}</h1> }
 ```
 
 ## Why would you want to use a state machine?
