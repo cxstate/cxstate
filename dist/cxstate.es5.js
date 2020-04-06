@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
@@ -441,5 +443,20 @@ var Next = function (fn) { return fn; };
 var State = function (def) { return def; };
 var Machine = function (def) { return def; };
 
-export { interpret, Event, Next, State, Machine };
+function useMachine(machineDef) {
+    var service = useState(function () { return interpret(machineDef); })[0];
+    var _a = useState({
+        path: service.path(),
+        context: service.context(),
+    }), state = _a[0], setState = _a[1];
+    useEffect(function () { return service.onTransition(function (context, path) {
+        setState({ context: context, path: path });
+    }); }, [service, setState]);
+    return [
+        __assign(__assign({}, state), { matchesOne: service.matchesOne, matchesNone: service.matchesNone }),
+        service.send,
+    ];
+}
+
+export { interpret, Event, Next, State, Machine, useMachine };
 //# sourceMappingURL=cxstate.es5.js.map

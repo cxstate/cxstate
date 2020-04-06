@@ -69,9 +69,13 @@ Most of this complexity unfortunately is not meaningful for 95% of the ways you'
 
 CxStates API is for the most part very similar to the one of XState. However CxState replaces the concept of invoking services with **deferred events** and **event sequences**. By that reducing the complexity of a machine definition together with the LOCs. Though CxState doesn't support parallel states within one machine; but due to it's efficiency has enough headroom to allow for two separate machines in place of one.
 
-**Better composability**
+### 4. Better composability
 
-Event compositions sequences and deferred events are the 2 major differentiation factors where CxState shows a more modular approach on top of the same conceptual foundation.
+Event compositions sequences and deferred events are the 2 major differentiation factors where CxState shows a more modular approach. In my opinion the path chosen by XState does not allow for the amount of composability and reusability that would actually be possible on the conceptual foundation.
+
+### 5. Stronger typing
+
+Though XState is written in TypeScript it's actual typing in event handlers is very weak. The reason behind this is the type system. CxState's type system on the other hand is designed around very strong typing without over-complicating the API. You'll find the helper functions Event<...>(...), Next<...>(...), State<...>(...) and  Machine<...>(...) to help with this.
 
 Learn more about CxState:
 
