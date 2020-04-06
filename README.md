@@ -4,6 +4,66 @@ CxState is a simplicity first finite state machine library inspired by XState. T
 
 Finite state machines like CxState are a modeling tool that helps to concisely and very precisely define the logic and state of a given software module. CxState may not only be used to streamline development of complex GUIs. It can be used beneficially wherever the concise modeling of program state represents an advantage for program stability. In the spirit of encapsulation it's usually best practice to use one state machine per module.
 
+## Quick start
+
+[React quick start below]
+
+```bash
+npm i -S @cxstate/cxstate
+```
+
+Basic framework-agnostic integration looks like this:
+
+```ts
+import { interpret } from '@cxstate/cxstate';
+// Assuming a machine definition, context and event interfaces in ./machine.ts
+import { Context, machine, DoEvent } from './machine';
+
+const service = interpret<Context>(machine);
+service.onTransition((context: Context, path: string) => {
+  // Your presentation should be re-rendered
+});
+
+// Sending strong typed events to the machine
+service.send<DoEvent>('DO_SOMETHING', {value: 'a value'});
+
+// Query for current state
+if (service.matchesOne('/state/path/a', '/state/path/b')) {
+  // Machine is in state '/state/path/a' or '/state/path/b'
+}
+if (service.matchesNone('/state/path/a', '/state/path/b')) {
+  // Machine is neither in state '/state/path/a' or '/state/path/b'
+}
+
+// Using context variables
+<h1>{{ service.context().header }}</h1>
+```
+
+## React quick start
+
+```bash
+npm i -S @cxstate/cxstate @cxstate/react
+```
+
+To use the react hook, additionally install `@cxstate/react` and use it as follows:
+
+```jsx
+import { useMachine } from '@cxstate/react';
+// Assuming a machine definition, context and event interfaces in ./machine.ts
+import { Context, machine, DoEvent } from './machine';
+
+const [current, send] = useMachine<Context>(machine);
+
+// Sending strong typed events to the machine
+send<DoEvent>('DO_SOMETHING', {value: 'a value'});
+
+// Conditional rendering if current state is '/state/path/a' or '/state/path/b'
+{ service.matchesOne('/state/path/a', '/state/path/b')) && <h1>{{ service.context().headerAOrB }}</h1> }
+
+// Conditional rendering if current state is neither '/state/path/a' or '/state/path/b'
+{ service.matchesNone('/state/path/a', '/state/path/b')) && <h1>{{ service.context().neitherHeaderAOrB }}</h1> }
+```
+
 ## Why would you want to use a state machine?
 
 The probably best way from which to built up understanding for finite state machines in general and CxState in particular is from the direction of the event. The state machine you define is a blackbox that encapsulates all the logic that you would otherwise distribute all over your module. Every change must be expressed in the form of an event handler in your state machine. The only way you can communicate the need for a change is by sending events to this handlers (for which the state machine provides the infrastructure next to other things). Apart from that you're using the state machine to query it for state and variables (to determine your presentation for instance). You're never setting state or variables directly in order not to violate encapsulation and raise state determinability and predictability of behavior. All of this taken together helps to harden your module quite considerably.
