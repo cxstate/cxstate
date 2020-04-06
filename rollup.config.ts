@@ -3,7 +3,6 @@ import commonjs from 'rollup-plugin-commonjs'
 import sourceMaps from 'rollup-plugin-sourcemaps'
 import camelCase from 'lodash.camelcase'
 import typescript from 'rollup-plugin-typescript2'
-import multiEntry from 'rollup-plugin-multi-entry'
 import json from 'rollup-plugin-json'
 
 const pkg = require('./package.json')
@@ -11,7 +10,7 @@ const pkg = require('./package.json')
 const libraryName = 'cxstate'
 
 export default {
-  input: [`src/${libraryName}.ts`, 'src/react.ts'],
+  input: `src/${libraryName}.ts`,
   output: [
     { file: pkg.main, name: camelCase(libraryName), format: 'umd', sourcemap: true },
     { file: pkg.module, format: 'es', sourcemap: true },
@@ -24,7 +23,7 @@ export default {
     include: 'src/**',
   },
   plugins: [
-    multiEntry(),
+    // multiEntry(),
     // Allow json resolution
     json(),
     // Compile TypeScript files

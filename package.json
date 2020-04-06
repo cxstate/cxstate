@@ -1,6 +1,6 @@
 {
-  "name": "cxstate",
-  "version": "0.5.3",
+  "name": "@cxstate/cxstate",
+  "version": "0.5.4",
   "description": "CxState is a simplicity first finite state machine library inspired by XState.",
   "keywords": [
     "state machine",
@@ -110,7 +110,6 @@
     "rollup": "^0.67.0",
     "rollup-plugin-commonjs": "^9.1.8",
     "rollup-plugin-json": "^3.1.0",
-    "rollup-plugin-multi-entry": "^2.1.0",
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-sourcemaps": "^0.4.2",
     "rollup-plugin-typescript2": "^0.27.0",
@@ -125,8 +124,5 @@
     "typedoc": "^0.17.3",
     "typescript": "^3.0.3"
   },
-  "dependencies": {
-    "@types/react": "^16.9.32",
-    "react": "^16.13.1"
-  }
+  "dependencies": {}
 }
