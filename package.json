@@ -1,7 +1,7 @@
 {
   "name": "cxstate",
-  "version": "0.5.0",
-  "description": "CxState is a finite state machine library inspired by XState.",
+  "version": "0.5.2",
+  "description": "CxState is a simplicity first finite state machine library inspired by XState.",
   "keywords": [
     "state machine",
     "finite state machine",
@@ -19,11 +19,11 @@
   "author": "Ronny Reichmann <ronny.reichmann@gmail.com>",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/cxstate/cxstate.git"
   },
   "license": "MIT",
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=10.0.0"
   },
   "scripts": {
     "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",

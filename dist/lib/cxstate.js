@@ -4,6 +4,5 @@ function __export(m) {
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./index"));
-__export(require("./hook"));
 __export(require("./fns"));
 //# sourceMappingURL=cxstate.js.map

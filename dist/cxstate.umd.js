@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react')) :
-    typeof define === 'function' && define.amd ? define(['exports', 'react'], factory) :
-    (factory((global.cxstate = {}),global.react));
-}(this, (function (exports,react) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+    typeof define === 'function' && define.amd ? define(['exports'], factory) :
+    (factory((global.cxstate = {})));
+}(this, (function (exports) { 'use strict';
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation. All rights reserved.
@@ -442,28 +442,12 @@
         };
     }
 
-    function useMachine(machineDef) {
-        var service = react.useState(function () { return interpret(machineDef); })[0];
-        var _a = react.useState({
-            path: service.path(),
-            context: service.context(),
-        }), state = _a[0], setState = _a[1];
-        react.useEffect(function () { return service.onTransition(function (context, path) {
-            setState({ context: context, path: path });
-        }); }, [service, setState]);
-        return [
-            __assign(__assign({}, state), { matchesOne: service.matchesOne, matchesNone: service.matchesNone }),
-            service.send,
-        ];
-    }
-
     var Event = function (def) { return def; };
     var Next = function (fn) { return fn; };
     var State = function (def) { return def; };
     var Machine = function (def) { return def; };
 
     exports.interpret = interpret;
-    exports.useMachine = useMachine;
     exports.Event = Event;
     exports.Next = Next;
     exports.State = State;

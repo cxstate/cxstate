@@ -2804,15 +2804,19 @@ img {
 			<a href="#cxstate" id="cxstate" style="color: inherit; text-decoration: none;">
 				<h1>CxState</h1>
 			</a>
-			<p>CxState is a finite state machine library inspired by XState. The &quot;Cx&quot; stands for &quot;coding experience&quot; and that&#39;s what this projects is focusing on: A finite state machine that is a breeze to program with.</p>
-			<p>This is the first public release. The is the documentation we have for now:</p>
+			<p>CxState is a simplicity first finite state machine library inspired by XState. The &quot;Cx&quot; stands for &quot;coding experience&quot; or &quot;comprehensible&quot;. Simplicity is the main design principle behind CxState.</p>
+			<p>Finite state machines like CxState are a modeling tool that helps to concisely and very precisely define the logic and state of a given software module. CxState may not only be used to streamline development of complex GUIs. It can be used beneficially wherever the concise modeling of program state represents an advantage for program stability. In the spirit of encapsulation it&#39;s usually best practice to use one state machine per module.</p>
+			<a href="#why-would-you-want-to-use-a-state-machine" id="why-would-you-want-to-use-a-state-machine" style="color: inherit; text-decoration: none;">
+				<h2>Why would you want to use a state machine?</h2>
+			</a>
+			<p>The probably best way from which to built up understanding for finite state machines in general and CxState in particular is from the direction of the event. The state machine you define is a blackbox that encapsulates all the logic that you would otherwise distribute all over your module. Every change must be expressed in the form of an event handler in your state machine. The only way you can communicate the need for a change is by sending events to this handlers (for which the state machine provides the infrastructure next to other things). Apart from that you&#39;re using the state machine to query it for state and variables (to determine your presentation for instance). You&#39;re never setting state or variables directly in order not to violate encapsulation and raise state determinability and predictability of behavior. All of this taken together helps to harden your module quite considerably.</p>
 			<a href="#toc" id="toc" style="color: inherit; text-decoration: none;">
 				<h2>TOC</h2>
 			</a>
 			<ol>
-				<li><a href="CONCEPTS.md">Concepts</a></li>
-				<li><a href="EXAMPLES.md">Examples</a></li>
-				<li><a href="WHY-CXSTATE.md">Why CxState</a></li>
+				<li><a href="./CONCEPTS.md">Concepts</a></li>
+				<li><a href="./EXAMPLES.md">Examples</a></li>
+				<li><a href="./WHY-CXSTATE.md">Why CxState</a></li>
 			</ol>
 		</div>
 		<section class="tsd-panel-group tsd-index-group">
@@ -2870,7 +2874,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Child<wbr>States<wbr>Def&lt;ContextType&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/166589f/src/types.ts#L21">types.ts:21</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/2fadc57/src/types.ts#L21">types.ts:21</a></li>
 					</ul>
 				</aside>
 				<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -2894,7 +2898,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">On<wbr>Transition<wbr>Fn&lt;ContextType&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/166589f/src/types.ts#L42">types.ts:42</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/2fadc57/src/types.ts#L42">types.ts:42</a></li>
 					</ul>
 				</aside>
 				<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -2934,7 +2938,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Send<wbr>Fn<span class="tsd-signature-symbol">:</span> &lt;EventType&gt;<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, event<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/166589f/src/types.ts#L41">types.ts:41</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/2fadc57/src/types.ts#L41">types.ts:41</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-type-declaration">
@@ -2974,7 +2978,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Update<wbr>Partial<wbr>Def&lt;ContextType, EventType&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/166589f/src/types.ts#L5">types.ts:5</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/2fadc57/src/types.ts#L5">types.ts:5</a></li>
 					</ul>
 				</aside>
 				<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3005,7 +3009,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/166589f/src/fns.ts#L7">fns.ts:7</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/2fadc57/src/fns.ts#L7">fns.ts:7</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3040,7 +3044,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/166589f/src/fns.ts#L10">fns.ts:10</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/2fadc57/src/fns.ts#L10">fns.ts:10</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3069,7 +3073,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/166589f/src/fns.ts#L8">fns.ts:8</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/2fadc57/src/fns.ts#L8">fns.ts:8</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3146,7 +3150,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/166589f/src/fns.ts#L9">fns.ts:9</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/2fadc57/src/fns.ts#L9">fns.ts:9</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3175,7 +3179,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/166589f/src/lib.ts#L27">lib.ts:27</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/2fadc57/src/lib.ts#L27">lib.ts:27</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3210,7 +3214,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/166589f/src/lib.ts#L55">lib.ts:55</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/2fadc57/src/lib.ts#L55">lib.ts:55</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3239,7 +3243,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/166589f/src/lib.ts#L77">lib.ts:77</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/2fadc57/src/lib.ts#L77">lib.ts:77</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3271,7 +3275,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/166589f/src/index.ts#L22">index.ts:22</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/2fadc57/src/index.ts#L22">index.ts:22</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3305,7 +3309,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/166589f/src/index.ts#L73">index.ts:73</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/2fadc57/src/index.ts#L73">index.ts:73</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3340,7 +3344,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/166589f/src/lib.ts#L7">lib.ts:7</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/2fadc57/src/lib.ts#L7">lib.ts:7</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3375,7 +3379,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/166589f/src/lib.ts#L84">lib.ts:84</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/2fadc57/src/lib.ts#L84">lib.ts:84</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -3401,7 +3405,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/166589f/src/lib.ts#L59">lib.ts:59</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/2fadc57/src/lib.ts#L59">lib.ts:59</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3439,7 +3443,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/166589f/src/hook.ts#L10">hook.ts:10</a></li>
+								<li>Defined in react.ts:10</li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
