@@ -67,8 +67,11 @@ export function updateContext<ContextType, EventType>(
     const anyFn = def.update[propName];
     if (typeof anyFn === 'function') {
       const fn = anyFn as (ctx: ContextType, ev?: EventType) => any;
-      update[propName] = fn(update, event);
-      didUpdate = true;
+      const changedValue = fn(update, event);
+      if (changedValue !== update[propName]) {
+        update[propName] = changedValue;
+        didUpdate = true;
+      }
     }
   }
   if (didUpdate) return update;
