@@ -227,6 +227,9 @@ function makeService(stateConfigs, initialContext, initialState) {
                 mutate(def);
                 transitionOrDispatch(def);
             }
+            else if (isDirty) {
+                informListeners();
+            }
         }
     };
     var send = function (name, event) {

@@ -63,7 +63,6 @@ function hasChildStates(state) {
     return !!(state.states && Object.values(state.states).length);
 }
 function updateContext(ctx, def, event) {
-    console.log('UPDATING CONTEXT');
     var update = __assign({}, ctx);
     var didUpdate = false;
     for (var propName in def.update) {
