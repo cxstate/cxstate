@@ -2800,6 +2800,53 @@ img {
 			</a>
 			<p>CxState is a simplicity first finite state machine library inspired by XState. The &quot;Cx&quot; stands for &quot;coding experience&quot; or &quot;comprehensible&quot;. Simplicity is the main design principle behind CxState.</p>
 			<p>Finite state machines like CxState are a modeling tool that helps to concisely and very precisely define the logic and state of a given software module. CxState may not only be used to streamline development of complex GUIs. It can be used beneficially wherever the concise modeling of program state represents an advantage for program stability. In the spirit of encapsulation it&#39;s usually best practice to use one state machine per module.</p>
+			<a href="#quick-start" id="quick-start" style="color: inherit; text-decoration: none;">
+				<h2>Quick start</h2>
+			</a>
+			<p>[React quick start below]</p>
+			<pre><code class="language-bash">npm i -S @cxstate/cxstate</code></pre>
+			<p>Basic framework-agnostic integration looks like this:</p>
+			<pre><code class="language-ts"><span class="hljs-keyword">import</span> { interpret } <span class="hljs-keyword">from</span> <span class="hljs-string">'@cxstate/cxstate'</span>;
+<span class="hljs-comment">// Assuming a machine definition, context and event interfaces in ./machine.ts</span>
+<span class="hljs-keyword">import</span> { Context, machine, DoEvent } <span class="hljs-keyword">from</span> <span class="hljs-string">'./machine'</span>;
+
+<span class="hljs-keyword">const</span> service = interpret&lt;Context&gt;(machine);
+service.onTransition(<span class="hljs-function">(<span class="hljs-params">context: Context, path: <span class="hljs-built_in">string</span></span>) =&gt;</span> {
+  <span class="hljs-comment">// Your presentation should be re-rendered</span>
+});
+
+<span class="hljs-comment">// Sending strong typed events to the machine</span>
+service.send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {value: <span class="hljs-string">'a value'</span>});
+
+<span class="hljs-comment">// Query for current state</span>
+<span class="hljs-keyword">if</span> (service.matchesOne(<span class="hljs-string">'/state/path/a'</span>, <span class="hljs-string">'/state/path/b'</span>)) {
+  <span class="hljs-comment">// Machine is in state '/state/path/a' or '/state/path/b'</span>
+}
+<span class="hljs-keyword">if</span> (service.matchesNone(<span class="hljs-string">'/state/path/a'</span>, <span class="hljs-string">'/state/path/b'</span>)) {
+  <span class="hljs-comment">// Machine is neither in state '/state/path/a' or '/state/path/b'</span>
+}
+
+<span class="hljs-comment">// Using context variables</span>
+&lt;h1&gt;{{ service.context().header }}&lt;<span class="hljs-regexp">/h1&gt;</span></code></pre>
+			<a href="#react-quick-start" id="react-quick-start" style="color: inherit; text-decoration: none;">
+				<h2>React quick start</h2>
+			</a>
+			<pre><code class="language-bash">npm i -S @cxstate/cxstate @cxstate/react</code></pre>
+			<p>To use the react hook, additionally install <code>@cxstate/react</code> and use it as follows:</p>
+			<pre><code class="language-jsx"><span class="hljs-keyword">import</span> { useMachine } <span class="hljs-keyword">from</span> <span class="hljs-string">'@cxstate/react'</span>;
+<span class="hljs-comment">// Assuming a machine definition, context and event interfaces in ./machine.ts</span>
+<span class="hljs-keyword">import</span> { Context, machine, DoEvent } <span class="hljs-keyword">from</span> <span class="hljs-string">'./machine'</span>;
+
+<span class="hljs-keyword">const</span> [current, send] = useMachine&lt;Context&gt;(machine);
+
+<span class="hljs-comment">// Sending strong typed events to the machine</span>
+send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span class="hljs-attr">value</span>: <span class="hljs-string">'a value'</span>});
+
+<span class="hljs-comment">// Conditional rendering if current state is '/state/path/a' or '/state/path/b'</span>
+{ current.matchesOne(<span class="hljs-string">'/state/path/a'</span>, <span class="hljs-string">'/state/path/b'</span>)) &amp;&amp; <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{{ current.context.headerAOrB }}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span> }
+
+<span class="hljs-comment">// Conditional rendering if current state is neither '/state/path/a' or '/state/path/b'</span>
+{ current.matchesNone(<span class="hljs-string">'/state/path/a'</span>, <span class="hljs-string">'/state/path/b'</span>)) &amp;&amp; <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{{ current.context.neitherHeaderAOrB }}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span> }</code></pre>
 			<a href="#why-would-you-want-to-use-a-state-machine" id="why-would-you-want-to-use-a-state-machine" style="color: inherit; text-decoration: none;">
 				<h2>Why would you want to use a state machine?</h2>
 			</a>
@@ -2866,7 +2913,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Child<wbr>States<wbr>Def&lt;ContextType&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/1d4b943/src/types.ts#L21">types.ts:21</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/0b32889/src/types.ts#L47">types.ts:47</a></li>
 					</ul>
 				</aside>
 				<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -2890,7 +2937,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">On<wbr>Transition<wbr>Fn&lt;ContextType&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/1d4b943/src/types.ts#L42">types.ts:42</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/0b32889/src/types.ts#L68">types.ts:68</a></li>
 					</ul>
 				</aside>
 				<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -2930,7 +2977,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Send<wbr>Fn<span class="tsd-signature-symbol">:</span> &lt;EventType&gt;<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, event<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/1d4b943/src/types.ts#L41">types.ts:41</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/0b32889/src/types.ts#L67">types.ts:67</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-type-declaration">
@@ -2970,7 +3017,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Update<wbr>Partial<wbr>Def&lt;ContextType, EventType&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/1d4b943/src/types.ts#L5">types.ts:5</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/0b32889/src/types.ts#L5">types.ts:5</a></li>
 					</ul>
 				</aside>
 				<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3001,7 +3048,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/1d4b943/src/fns.ts#L7">fns.ts:7</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/0b32889/src/fns.ts#L7">fns.ts:7</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3036,7 +3083,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/1d4b943/src/fns.ts#L10">fns.ts:10</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/0b32889/src/fns.ts#L10">fns.ts:10</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3065,7 +3112,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/1d4b943/src/fns.ts#L8">fns.ts:8</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/0b32889/src/fns.ts#L8">fns.ts:8</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3142,7 +3189,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/1d4b943/src/fns.ts#L9">fns.ts:9</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/0b32889/src/fns.ts#L9">fns.ts:9</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3171,7 +3218,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/1d4b943/src/lib.ts#L27">lib.ts:27</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/0b32889/src/lib.ts#L27">lib.ts:27</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3206,7 +3253,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/1d4b943/src/lib.ts#L55">lib.ts:55</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/0b32889/src/lib.ts#L55">lib.ts:55</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3235,7 +3282,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/1d4b943/src/lib.ts#L77">lib.ts:77</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/0b32889/src/lib.ts#L81">lib.ts:81</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3267,7 +3314,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/1d4b943/src/index.ts#L22">index.ts:22</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/0b32889/src/index.ts#L22">index.ts:22</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3301,7 +3348,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/1d4b943/src/index.ts#L73">index.ts:73</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/0b32889/src/index.ts#L73">index.ts:73</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3336,7 +3383,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/1d4b943/src/lib.ts#L7">lib.ts:7</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/0b32889/src/lib.ts#L7">lib.ts:7</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3371,7 +3418,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/1d4b943/src/lib.ts#L84">lib.ts:84</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/0b32889/src/lib.ts#L88">lib.ts:88</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -3397,7 +3444,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/1d4b943/src/lib.ts#L59">lib.ts:59</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/0b32889/src/lib.ts#L59">lib.ts:59</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>

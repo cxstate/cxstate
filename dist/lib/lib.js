@@ -63,14 +63,18 @@ function hasChildStates(state) {
     return !!(state.states && Object.values(state.states).length);
 }
 function updateContext(ctx, def, event) {
+    console.log('UPDATING CONTEXT');
     var update = __assign({}, ctx);
     var didUpdate = false;
     for (var propName in def.update) {
         var anyFn = def.update[propName];
         if (typeof anyFn === 'function') {
             var fn = anyFn;
-            update[propName] = fn(update, event);
-            didUpdate = true;
+            var changedValue = fn(update, event);
+            if (changedValue !== update[propName]) {
+                update[propName] = changedValue;
+                didUpdate = true;
+            }
         }
     }
     if (didUpdate)

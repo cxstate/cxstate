@@ -215,6 +215,8 @@ function makeService<ContextType>(
       } else if (!def.cond) {
         mutate(def);
         transitionOrDispatch(def);
+      } else if (isDirty) {
+        informListeners();
       }
     }
   };

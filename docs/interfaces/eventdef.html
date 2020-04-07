@@ -2858,9 +2858,16 @@ img {
 				<div class="tsd-signature tsd-kind-icon">cond<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, ev<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/1d4b943/src/types.ts#L11">types.ts:11</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/0b32889/src/types.ts#L20">types.ts:20</a></li>
 					</ul>
 				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Optional event conditional fn. If returns true, the event is executed.
+							The context passed to the cond fn is the actual current context.
+						The context must not be changed, otherwise unpredictable behavior might occur.</p>
+					</div>
+				</div>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 				<a name="next" class="tsd-anchor"></a>
@@ -2868,9 +2875,17 @@ img {
 				<div class="tsd-signature tsd-kind-icon">next<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, eventA<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">NextEventType</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">)</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/1d4b943/src/types.ts#L14">types.ts:14</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/0b32889/src/types.ts#L40">types.ts:40</a></li>
 					</ul>
 				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Optional next event name of fn.
+							If event name is used, the original event is passed on.
+							If event fn is used, a payload transformation is expected that returns next event name and new even payload.
+						Use the helper fn Next&lt;ContextType, EventType, NextEventType&gt;(...) then for strong typing.</p>
+					</div>
+				</div>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 				<a name="replace" class="tsd-anchor"></a>
@@ -2878,9 +2893,16 @@ img {
 				<div class="tsd-signature tsd-kind-icon">replace<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, ev<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">)</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/1d4b943/src/types.ts#L12">types.ts:12</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/0b32889/src/types.ts#L26">types.ts:26</a></li>
 					</ul>
 				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Optional replace fn. Allows for complete replacement of whole context.
+							The context passed to the replace fn is the actual current context.
+						A change is only accepted as such if the new context is different: a !== b</p>
+					</div>
+				</div>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 				<a name="target" class="tsd-anchor"></a>
@@ -2888,9 +2910,15 @@ img {
 				<div class="tsd-signature tsd-kind-icon">target<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/1d4b943/src/types.ts#L10">types.ts:10</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/0b32889/src/types.ts#L14">types.ts:14</a></li>
 					</ul>
 				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Optional target path of event. Causes state transition. Can be a relative path.
+						The context must not be changed, otherwise unpredictable behavior might occur.</p>
+					</div>
+				</div>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 				<a name="update" class="tsd-anchor"></a>
@@ -2898,9 +2926,17 @@ img {
 				<div class="tsd-signature tsd-kind-icon">update<span class="tsd-signature-symbol">:</span> <a href="../globals.html#updatepartialdef" class="tsd-signature-type">UpdatePartialDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">&gt;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/1d4b943/src/types.ts#L13">types.ts:13</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/0b32889/src/types.ts#L33">types.ts:33</a></li>
 					</ul>
 				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Optional update fn. Updates one or many properties of the context.
+							The context passed to the update partial is a working copy of the original.
+							For every function in the partial the same working copy is used.
+						A change is only accepted as such if the new value is different: a !== b</p>
+					</div>
+				</div>
 			</section>
 		</section>
 		<footer class="with-border-bottom">
