@@ -1,7 +1,3 @@
-// type Partial<T> = {
-//     [P in keyof T]?: T[P];
-// }
-
 type UpdatePartialDef<ContextType, EventType> = {
     [P in keyof ContextType]?: (ctx: ContextType, ev: EventType) => ContextType[P];
 }

@@ -241,6 +241,10 @@ function makeService<ContextType>(
 
     if (event instanceof Promise) {
       eventPayloadPromises.set(name, event);
+      if (isDirty) {
+        // In case the event originated in a next, we should transitions before waiting for the promise to resolve
+        informListeners();
+      }
       (async () => {
         try {
           const success = await event;

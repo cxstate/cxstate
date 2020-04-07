@@ -354,6 +354,10 @@
             };
             if (event instanceof Promise) {
                 eventPayloadPromises.set(name, event);
+                if (isDirty) {
+                    // In case the event originated in a next, we should transitions before waiting for the promise to resolve
+                    informListeners();
+                }
                 (function () { return __awaiter(_this, void 0, void 0, function () {
                     var success, error_1;
                     return __generator(this, function (_a) {

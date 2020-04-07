@@ -1,6 +1,6 @@
 {
   "name": "@cxstate/cxstate",
-  "version": "0.5.8",
+  "version": "0.5.9",
   "description": "CxState is a simplicity first finite state machine library inspired by XState.",
   "keywords": [
     "state machine",
