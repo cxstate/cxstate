@@ -2755,6 +2755,9 @@ img {
 			<a href="globals.html#updatepartialdef" class="tsd-kind-icon">Update<wbr>Partial<wbr>Def</a>
 		</li>
 		<li class=" tsd-kind-function tsd-has-type-parameter">
+			<a href="globals.html#deferrednextevent" class="tsd-kind-icon">Deferred<wbr>Next<wbr>Event</a>
+		</li>
+		<li class=" tsd-kind-function tsd-has-type-parameter">
 			<a href="globals.html#event" class="tsd-kind-icon">Event</a>
 		</li>
 		<li class=" tsd-kind-function tsd-has-type-parameter">
@@ -2888,6 +2891,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 					<section class="tsd-index-section ">
 						<h3>Functions</h3>
 						<ul class="tsd-index-list">
+							<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#deferrednextevent" class="tsd-kind-icon">Deferred<wbr>Next<wbr>Event</a></li>
 							<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#event" class="tsd-kind-icon">Event</a></li>
 							<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#machine" class="tsd-kind-icon">Machine</a></li>
 							<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#next" class="tsd-kind-icon">Next</a></li>
@@ -2913,7 +2917,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 				<div class="tsd-signature tsd-kind-icon">Child<wbr>States<wbr>Def&lt;ContextType&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/94c324e/src/types.ts#L43">types.ts:43</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/types.ts#L43">types.ts:43</a></li>
 					</ul>
 				</aside>
 				<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -2937,7 +2941,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 				<div class="tsd-signature tsd-kind-icon">On<wbr>Transition<wbr>Fn&lt;ContextType&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/94c324e/src/types.ts#L64">types.ts:64</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/types.ts#L64">types.ts:64</a></li>
 					</ul>
 				</aside>
 				<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -2977,7 +2981,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 				<div class="tsd-signature tsd-kind-icon">Send<wbr>Fn<span class="tsd-signature-symbol">:</span> &lt;EventType&gt;<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, event<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/94c324e/src/types.ts#L63">types.ts:63</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/types.ts#L63">types.ts:63</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-type-declaration">
@@ -3017,7 +3021,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 				<div class="tsd-signature tsd-kind-icon">Update<wbr>Partial<wbr>Def&lt;ContextType, EventType&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/94c324e/src/types.ts#L1">types.ts:1</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/types.ts#L1">types.ts:1</a></li>
 					</ul>
 				</aside>
 				<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3039,6 +3043,65 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Functions</h2>
 			<section class="tsd-panel tsd-member tsd-kind-function tsd-has-type-parameter">
+				<a name="deferrednextevent" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagConst">Const</span> Deferred<wbr>Next<wbr>Event</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
+					<li class="tsd-signature tsd-kind-icon">Deferred<wbr>Next<wbr>Event&lt;ContextType, EventType, NextEventType&gt;<span class="tsd-signature-symbol">(</span>nextEventName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, deferredFn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, payload<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">NextEventType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/eventdef.html" class="tsd-signature-type">EventDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/fns.ts#L12">fns.ts:12</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-type-parameters-title">Type parameters</h4>
+						<ul class="tsd-type-parameters">
+							<li>
+								<h4>ContextType</h4>
+							</li>
+							<li>
+								<h4>EventType</h4>
+							</li>
+							<li>
+								<h4>NextEventType</h4>
+							</li>
+						</ul>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>nextEventName: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5>deferredFn: <span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, payload<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">NextEventType</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<ul class="tsd-parameters">
+									<li class="tsd-parameter-signature">
+										<ul class="tsd-signatures tsd-kind-type-literal">
+											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, payload<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">NextEventType</span><span class="tsd-signature-symbol">&gt;</span></li>
+										</ul>
+										<ul class="tsd-descriptions">
+											<li class="tsd-description">
+												<h4 class="tsd-parameters-title">Parameters</h4>
+												<ul class="tsd-parameters">
+													<li>
+														<h5>ctx: <span class="tsd-signature-type">ContextType</span></h5>
+													</li>
+													<li>
+														<h5>payload: <span class="tsd-signature-type">EventType</span></h5>
+													</li>
+												</ul>
+												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">NextEventType</span><span class="tsd-signature-symbol">&gt;</span></h4>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="interfaces/eventdef.html" class="tsd-signature-type">EventDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-has-type-parameter">
 				<a name="event" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> Event</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
@@ -3048,7 +3111,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/94c324e/src/fns.ts#L7">fns.ts:7</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/fns.ts#L7">fns.ts:7</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3083,7 +3146,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/94c324e/src/fns.ts#L10">fns.ts:10</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/fns.ts#L10">fns.ts:10</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3112,7 +3175,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/94c324e/src/fns.ts#L8">fns.ts:8</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/fns.ts#L8">fns.ts:8</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3189,7 +3252,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/94c324e/src/fns.ts#L9">fns.ts:9</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/fns.ts#L9">fns.ts:9</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3218,7 +3281,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/94c324e/src/lib.ts#L27">lib.ts:27</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/lib.ts#L27">lib.ts:27</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3253,7 +3316,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/94c324e/src/lib.ts#L55">lib.ts:55</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/lib.ts#L55">lib.ts:55</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3282,7 +3345,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/94c324e/src/lib.ts#L80">lib.ts:80</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/lib.ts#L80">lib.ts:80</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3314,7 +3377,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/94c324e/src/index.ts#L22">index.ts:22</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/index.ts#L22">index.ts:22</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3348,7 +3411,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/94c324e/src/index.ts#L73">index.ts:73</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/index.ts#L73">index.ts:73</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3383,7 +3446,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/94c324e/src/lib.ts#L7">lib.ts:7</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/lib.ts#L7">lib.ts:7</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3418,7 +3481,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/94c324e/src/lib.ts#L87">lib.ts:87</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/lib.ts#L87">lib.ts:87</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -3444,7 +3507,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/94c324e/src/lib.ts#L59">lib.ts:59</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/lib.ts#L59">lib.ts:59</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>

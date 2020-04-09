@@ -456,12 +456,19 @@
     var Next = function (fn) { return fn; };
     var State = function (def) { return def; };
     var Machine = function (def) { return def; };
+    var DeferredNextEvent = function (nextEventName, deferredFn) { return Event({
+        next: Next(function (ctx, payload) { return [
+            nextEventName,
+            deferredFn(ctx, payload),
+        ]; }),
+    }); };
 
     exports.interpret = interpret;
     exports.Event = Event;
     exports.Next = Next;
     exports.State = State;
     exports.Machine = Machine;
+    exports.DeferredNextEvent = DeferredNextEvent;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

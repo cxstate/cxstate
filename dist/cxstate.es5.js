@@ -450,6 +450,12 @@ var Event = function (def) { return def; };
 var Next = function (fn) { return fn; };
 var State = function (def) { return def; };
 var Machine = function (def) { return def; };
+var DeferredNextEvent = function (nextEventName, deferredFn) { return Event({
+    next: Next(function (ctx, payload) { return [
+        nextEventName,
+        deferredFn(ctx, payload),
+    ]; }),
+}); };
 
-export { interpret, Event, Next, State, Machine };
+export { interpret, Event, Next, State, Machine, DeferredNextEvent };
 //# sourceMappingURL=cxstate.es5.js.map
