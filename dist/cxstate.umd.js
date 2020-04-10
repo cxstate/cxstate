@@ -308,6 +308,10 @@
                     }
                 }
             };
+            var tap = function (def) {
+                if (def.tap)
+                    def.tap(currentContext, event);
+            };
             var dispatch = function (def) {
                 if (typeof def.next === 'string')
                     send(def.next, event);
@@ -328,11 +332,13 @@
                 var def = defs_1[_i];
                 if (def.cond && def.cond(currentContext, event)) {
                     mutate(def);
+                    tap(def);
                     transitionOrDispatch(def);
                     break;
                 }
                 else if (!def.cond) {
                     mutate(def);
+                    tap(def);
                     transitionOrDispatch(def);
                 }
                 else if (isDirty) {

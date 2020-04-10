@@ -2801,8 +2801,13 @@ img {
 			<a href="#cxstate" id="cxstate" style="color: inherit; text-decoration: none;">
 				<h1>CxState</h1>
 			</a>
-			<p>CxState is a simplicity first finite state machine library inspired by XState. The &quot;Cx&quot; stands for &quot;coding experience&quot; or &quot;comprehensible&quot;. Simplicity is the main design principle behind CxState.</p>
-			<p>Finite state machines like CxState are a modeling tool that helps to concisely and very precisely define the logic and state of a given software module. CxState may not only be used to streamline development of complex GUIs. It can be used beneficially wherever the concise modeling of program state represents an advantage for program stability. In the spirit of encapsulation it&#39;s usually best practice to use one state machine per module.</p>
+			<p>CxState is a simplicity first finite state machine library inspired by XState. The &quot;Cx&quot; stands for &quot;coding experience&quot; or &quot;comprehensible&quot;. Simplicity is the main design principle behind CxState. The main differentiation factors of CxState are:</p>
+			<ul>
+				<li>Stronger typing: CxState&#39;s type system allows for more comprehensible error messages</li>
+				<li>Reduced conceptual complexity: CxState&#39;s main concept is the event (in a messaging pattern); if you get that, you&#39;re done with the learning curve</li>
+				<li>Better composability: Events in CxState are very modular, mix and match them as you like</li>
+			</ul>
+			<p>Finite state machines like CxState are a modeling tool that helps to concisely and very precisely define the behavior and state of a given software module. CxState may not only be used to harden the behavior of complex GUIs, it can be used beneficially wherever the concise modeling of program state represents an advantage for program stability. In the spirit of encapsulation it&#39;s usually best practice to use one state machine per module.</p>
 			<a href="#quick-start" id="quick-start" style="color: inherit; text-decoration: none;">
 				<h2>Quick start</h2>
 			</a>
@@ -2836,24 +2841,24 @@ service.send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {va
 			</a>
 			<pre><code class="language-bash">npm i -S @cxstate/cxstate @cxstate/react</code></pre>
 			<p>To use the react hook, additionally install <code>@cxstate/react</code> and use it as follows:</p>
-			<pre><code class="language-jsx"><span class="hljs-keyword">import</span> { useMachine } <span class="hljs-keyword">from</span> <span class="hljs-string">'@cxstate/react'</span>;
-<span class="hljs-comment">// Assuming a machine definition, context and event interfaces in ./machine.ts</span>
-<span class="hljs-keyword">import</span> { Context, machine, DoEvent } <span class="hljs-keyword">from</span> <span class="hljs-string">'./machine'</span>;
+			<pre><code class="language-ts">import { useMachine } from '@cxstate/react';
+// Assuming a machine definition, context and event interfaces in ./machine.ts
+import { Context, machine, DoEvent } from './machine';
 
-<span class="hljs-keyword">const</span> [current, send] = useMachine&lt;Context&gt;(machine);
+const [current, send] = useMachine&lt;Context&gt;(machine);
 
-<span class="hljs-comment">// Sending strong typed events to the machine</span>
-send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span class="hljs-attr">value</span>: <span class="hljs-string">'a value'</span>});
+// Sending strong typed events to the machine
+send&lt;DoEvent&gt;('DO_SOMETHING', {value: 'a value'});
 
-<span class="hljs-comment">// Conditional rendering if current state is '/state/path/a' or '/state/path/b'</span>
-{ current.matchesOne(<span class="hljs-string">'/state/path/a'</span>, <span class="hljs-string">'/state/path/b'</span>)) &amp;&amp; <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{{ current.context.headerAOrB }}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span> }
+// Conditional rendering if current state is '/state/path/a' or '/state/path/b'
+{ current.matchesOne('/state/path/a', '/state/path/b')) &amp;&amp; &lt;h1&gt;{{ current.context.headerAOrB }}&lt;/h1&gt; }
 
-<span class="hljs-comment">// Conditional rendering if current state is neither '/state/path/a' or '/state/path/b'</span>
-{ current.matchesNone(<span class="hljs-string">'/state/path/a'</span>, <span class="hljs-string">'/state/path/b'</span>)) &amp;&amp; <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{{ current.context.neitherHeaderAOrB }}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span> }</code></pre>
+// Conditional rendering if current state is neither '/state/path/a' or '/state/path/b'
+{ current.matchesNone('/state/path/a', '/state/path/b')) &amp;&amp; &lt;h1&gt;{{ current.context.neitherHeaderAOrB }}&lt;/h1&gt; }</code></pre>
 			<a href="#why-would-you-want-to-use-a-state-machine" id="why-would-you-want-to-use-a-state-machine" style="color: inherit; text-decoration: none;">
 				<h2>Why would you want to use a state machine?</h2>
 			</a>
-			<p>The probably best way from which to built up understanding for finite state machines in general and CxState in particular is from the direction of the event. The state machine you define is a blackbox that encapsulates all the logic that you would otherwise distribute all over your module. Every change must be expressed in the form of an event handler in your state machine. The only way you can communicate the need for a change is by sending events to this handlers (for which the state machine provides the infrastructure next to other things). Apart from that you&#39;re using the state machine to query it for state and variables (to determine your presentation for instance). You&#39;re never setting state or variables directly in order not to violate encapsulation and raise state determinability and predictability of behavior. All of this taken together helps to harden your module quite considerably.</p>
+			<p>The probably best way from which to built up understanding for finite state machines in general and CxState in particular is from the direction of the event. The state machine you define is a blackbox that encapsulates all the logic that you would otherwise distribute all over your module. Every change must be expressed in the form of an event handler in your state machine. The only way you can communicate the need for a change is by sending events to this handlers (for which the state machine provides the infrastructure next to other things). Apart from that you&#39;re using the state machine to query it for state and variables (to determine your presentation for instance). You&#39;re never setting state or variables directly in order not to violate encapsulation and raise state determinability and predictability of behavior. Thus hardening module logic.</p>
 			<a href="#toc" id="toc" style="color: inherit; text-decoration: none;">
 				<h2>TOC</h2>
 			</a>
@@ -2917,7 +2922,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 				<div class="tsd-signature tsd-kind-icon">Child<wbr>States<wbr>Def&lt;ContextType&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/types.ts#L43">types.ts:43</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/types.ts#L48">types.ts:48</a></li>
 					</ul>
 				</aside>
 				<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -2941,7 +2946,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 				<div class="tsd-signature tsd-kind-icon">On<wbr>Transition<wbr>Fn&lt;ContextType&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/types.ts#L64">types.ts:64</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/types.ts#L69">types.ts:69</a></li>
 					</ul>
 				</aside>
 				<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -2981,7 +2986,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 				<div class="tsd-signature tsd-kind-icon">Send<wbr>Fn<span class="tsd-signature-symbol">:</span> &lt;EventType&gt;<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, event<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/types.ts#L63">types.ts:63</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/types.ts#L68">types.ts:68</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-type-declaration">
@@ -3021,7 +3026,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 				<div class="tsd-signature tsd-kind-icon">Update<wbr>Partial<wbr>Def&lt;ContextType, EventType&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/types.ts#L1">types.ts:1</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/types.ts#L1">types.ts:1</a></li>
 					</ul>
 				</aside>
 				<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3052,7 +3057,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/fns.ts#L12">fns.ts:12</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/fns.ts#L12">fns.ts:12</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3111,7 +3116,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/fns.ts#L7">fns.ts:7</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/fns.ts#L7">fns.ts:7</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3146,7 +3151,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/fns.ts#L10">fns.ts:10</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/fns.ts#L10">fns.ts:10</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3175,7 +3180,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/fns.ts#L8">fns.ts:8</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/fns.ts#L8">fns.ts:8</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3252,7 +3257,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/fns.ts#L9">fns.ts:9</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/fns.ts#L9">fns.ts:9</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3281,7 +3286,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/lib.ts#L27">lib.ts:27</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/lib.ts#L27">lib.ts:27</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3316,7 +3321,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/lib.ts#L55">lib.ts:55</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/lib.ts#L55">lib.ts:55</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3345,7 +3350,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/lib.ts#L80">lib.ts:80</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/lib.ts#L80">lib.ts:80</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3377,7 +3382,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/index.ts#L22">index.ts:22</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/index.ts#L22">index.ts:22</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3411,7 +3416,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/index.ts#L73">index.ts:73</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/index.ts#L73">index.ts:73</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3446,7 +3451,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/lib.ts#L7">lib.ts:7</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/lib.ts#L7">lib.ts:7</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -3481,7 +3486,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/lib.ts#L87">lib.ts:87</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/lib.ts#L87">lib.ts:87</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -3507,7 +3512,7 @@ send&lt;DoEvent&gt;(<span class="hljs-string">'DO_SOMETHING'</span>, {<span clas
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/lib.ts#L59">lib.ts:59</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/lib.ts#L59">lib.ts:59</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>

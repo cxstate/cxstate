@@ -2737,6 +2737,9 @@ img {
 					<a href="eventdef.html#replace" class="tsd-kind-icon">replace</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-interface">
+					<a href="eventdef.html#tap" class="tsd-kind-icon">tap</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-interface">
 					<a href="eventdef.html#target" class="tsd-kind-icon">target</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-interface">
@@ -2846,6 +2849,7 @@ img {
 							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="eventdef.html#cond" class="tsd-kind-icon">cond</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="eventdef.html#next" class="tsd-kind-icon">next</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="eventdef.html#replace" class="tsd-kind-icon">replace</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="eventdef.html#tap" class="tsd-kind-icon">tap</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="eventdef.html#target" class="tsd-kind-icon">target</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="eventdef.html#update" class="tsd-kind-icon">update</a></li>
 						</ul>
@@ -2861,7 +2865,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">cond<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, ev<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/types.ts#L16">types.ts:16</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/types.ts#L16">types.ts:16</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -2878,7 +2882,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">next<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, eventA<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">NextEventType</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">)</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/types.ts#L36">types.ts:36</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/types.ts#L41">types.ts:41</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -2896,7 +2900,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">replace<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, ev<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">)</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/types.ts#L22">types.ts:22</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/types.ts#L22">types.ts:22</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -2908,12 +2912,28 @@ img {
 				</div>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<a name="tap" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> tap</h3>
+				<div class="tsd-signature tsd-kind-icon">tap<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, ev<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/types.ts#L34">types.ts:34</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Optional tap fn. Taps into one or many properties of the context.
+						A tap function can be employed for side-effects that don&#39;t change the context.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 				<a name="target" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagOptional">Optional</span> target</h3>
 				<div class="tsd-signature tsd-kind-icon">target<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/types.ts#L10">types.ts:10</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/types.ts#L10">types.ts:10</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -2929,7 +2949,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">update<span class="tsd-signature-symbol">:</span> <a href="../globals.html#updatepartialdef" class="tsd-signature-type">UpdatePartialDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">&gt;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/219f72f/src/types.ts#L29">types.ts:29</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/types.ts#L29">types.ts:29</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">

@@ -197,6 +197,9 @@ function makeService<ContextType>(
         }
       }
     };
+    const tap = (def: EventDef<ContextType>) => {
+      if (def.tap) def.tap(currentContext, event);
+    };
     const dispatch = (def: EventDef<ContextType>) => {
       if (typeof def.next === 'string') send(def.next, event);
       else if (def.next) send(...def.next(currentContext, event));
@@ -210,10 +213,12 @@ function makeService<ContextType>(
     for (const def of defs) {
       if (def.cond && def.cond(currentContext, event)) {
         mutate(def);
+        tap(def);
         transitionOrDispatch(def);
         break;
       } else if (!def.cond) {
         mutate(def);
+        tap(def);
         transitionOrDispatch(def);
       } else if (isDirty) {
         informListeners();

@@ -27,6 +27,11 @@ export interface EventDef<ContextType, EventType = any, NextEventType = any> {
      */
     update?: UpdatePartialDef<ContextType, EventType>;
     /**
+     * Optional tap fn. Taps into one or many properties of the context.
+     * A tap function can be employed for side-effects that don't change the context.
+     */
+    tap?: (ctx: ContextType, ev: EventType) => void;
+    /**
      * Optional next event name of fn.
      * If event name is used, the original event is passed on.
      * If event fn is used, a payload transformation is expected that returns next event name and new even payload.

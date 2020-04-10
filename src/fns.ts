@@ -9,7 +9,7 @@ export const Next = <ContextType, EventType, NextEventType>(fn: (ctx: ContextTyp
 export const State = <ContextType>(def: StateDef<ContextType>) => def;
 export const Machine = <ContextType>(def: MachineDef<ContextType>) => def;
 
-export const DeferredNextEvent = <ContextType, EventType, NextEventType>(
+export const DeferredNextEvent = <ContextType=any, EventType=any, NextEventType=void>(
   nextEventName: string,
   deferredFn: (ctx: ContextType, payload: EventType) => Promise<NextEventType>,
 ) => Event<ContextType, EventType>({
