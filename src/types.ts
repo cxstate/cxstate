@@ -69,7 +69,7 @@ export type SendFn = <PayloadType=any>(name: string, payload?: PayloadType|Promi
 export type OnTransitionFn<ContextType> = (ctx: ContextType, path: string) => void;
 
 export interface Service<ContextType> {
-  context: () => ContextType
+  context: () => Readonly<ContextType>
   path: () => string
   send: SendFn
   matchesOne: (...paths: string[]) => boolean,
@@ -78,7 +78,7 @@ export interface Service<ContextType> {
 }
 
 export interface CurrentMachineState<ContextType> {
-  context: ContextType
+  context: Readonly<ContextType>
   path: string
   matchesOne: (...paths: string[]) => boolean
   matchesNone: (...paths: string[]) => boolean

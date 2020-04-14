@@ -313,7 +313,7 @@ function makeService<ContextType>(
   };
 
   return {
-    context: () => currentContext,
+    context: () => currentContext as Readonly<ContextType>,
     path: () => currentState().path.absolute,
     send,
     matchesOne: (...paths: string[]) => matches(true, paths),
