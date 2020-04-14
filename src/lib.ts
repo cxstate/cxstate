@@ -56,18 +56,18 @@ function hasChildStates<ContextType>(state: StateDef<ContextType>) :boolean {
   return !!(state.states && Object.values(state.states).length);
 }
 
-export function updateContext<ContextType, EventType>(
+export function updateContext<ContextType, PayloadType>(
   ctx: ContextType,
   def: EventDef<ContextType>,
-  event?: EventType,
+  payload?: PayloadType,
 ) {
   const update = {...ctx};
   let didUpdate = false;
   for (const propName in def.update) {
     const anyFn = def.update[propName];
     if (typeof anyFn === 'function') {
-      const fn = anyFn as (ctx: ContextType, ev?: EventType) => any;
-      const changedValue = fn(update, event);
+      const fn = anyFn as (ctx: ContextType, pl?: PayloadType) => any;
+      const changedValue = fn(update, payload);
       if (changedValue !== update[propName]) {
         update[propName] = changedValue;
         didUpdate = true;

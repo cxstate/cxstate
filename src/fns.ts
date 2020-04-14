@@ -4,17 +4,17 @@ import {
   MachineDef,
 } from './types';
 
-export const Event = <ContextType, EventType=any, NextEventType=any>(def: EventDef<ContextType, EventType, NextEventType>) => def;
-export const Next = <ContextType, EventType, NextEventType>(fn: (ctx: ContextType, eventA: EventType) => [string, NextEventType]) => fn;
+export const Event = <ContextType, PayloadType=any, NextPayloadType=any>(def: EventDef<ContextType, PayloadType, NextPayloadType>) => def;
+export const Next = <ContextType, PayloadType, NextPayloadType>(fn: (ctx: ContextType, inputPayload: PayloadType) => [string, NextPayloadType]) => fn;
 export const State = <ContextType>(def: StateDef<ContextType>) => def;
 export const Machine = <ContextType>(def: MachineDef<ContextType>) => def;
 
-export const DeferredNextEvent = <ContextType=any, EventType=any, NextEventType=void>(
+export const DeferredNextEvent = <ContextType=any, PayloadType=any, NextPayloadType=void>(
   nextEventName: string,
-  deferredFn: (ctx: ContextType, payload: EventType) => Promise<NextEventType>,
-) => Event<ContextType, EventType>({
-  next: Next<ContextType, EventType, Promise<NextEventType>>(
-    (ctx: ContextType, payload: EventType) => [
+  deferredFn: (ctx: ContextType, payload: PayloadType) => Promise<NextPayloadType>,
+) => Event<ContextType, PayloadType>({
+  next: Next<ContextType, PayloadType, Promise<NextPayloadType>>(
+    (ctx: ContextType, payload: PayloadType) => [
       nextEventName,
       deferredFn(ctx, payload),
     ],

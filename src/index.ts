@@ -118,17 +118,17 @@ function makeService<ContextType>(
   };
 
   // from: state path in which the event handler was found
-  const transitionToTarget = <EventType>(
+  const transitionToTarget = <PayloadType>(
     target: string,
     from: StateConfig<ContextType>,
-    srcEvent: EventType,
+    srcPayload: PayloadType,
   ) => {
     if (target) {
       const fsp = from.path;
       const targetPath = resolvePath(`${fsp.absolute}/`, target);
       const targetConfig = stateConfigs.find(sc => sc.path.absolute === targetPath);
       if (targetConfig) {
-        transitionToState<EventType>(targetConfig, srcEvent);
+        transitionToState<PayloadType>(targetConfig, srcPayload);
       } else {
         throw new Error(`No state defined for path "${targetPath}"`);
       }
@@ -139,9 +139,9 @@ function makeService<ContextType>(
 
   // ACTIVE STATE HANDLING
 
-  const transitionToState = <EventType>(
+  const transitionToState = <PayloadType>(
     parent: StateConfig<ContextType>,
-    srcEvent: EventType,
+    srcPayload: PayloadType,
   ) => {
     const child = findInitialChildState(currentContext, stateConfigs, parent);
     const transitionTargetState = child ? child : parent;
@@ -151,46 +151,46 @@ function makeService<ContextType>(
       activeStates = rebuiltActiveStates;
       matcherMemoization = {};
       isDirty = true;
-      processCurrentStateEntryEvent<EventType>(srcEvent);
+      processCurrentStateEntryEvent<PayloadType>(srcPayload);
     } /* TODO: temporary state. Else case is important for it. */
     if (isDirty) informListeners();
   };
 
   // EVENT PROCESSING
 
-  const processCurrentStateEntryEvent = <EventType=any>(srcEvent: EventType) => {
+  const processCurrentStateEntryEvent = <PayloadType=any>(srcPayload: PayloadType) => {
     const cs = currentState();
-    if (cs.state.entry) processAnyEventHandler<EventType>(cs.state.entry, cs, srcEvent);
+    if (cs.state.entry) processAnyEventHandler<PayloadType>(cs.state.entry, cs, srcPayload);
   };
 
-  const processAnyEventHandler = <EventType=AnalyserNode>(
+  const processAnyEventHandler = <PayloadType=AnalyserNode>(
     anyHandler: string|EventDef<ContextType>|EventDef<ContextType>[],
     from: StateConfig<ContextType>,
-    event: EventType,
+    payload: PayloadType,
   ) => {
     if (typeof anyHandler === 'string') {
-      transitionToTarget<EventType>(anyHandler, from, event);
+      transitionToTarget<PayloadType>(anyHandler, from, payload);
     } else if (anyHandler instanceof Array) {
-      processEvents<EventType>(anyHandler, from, event);
+      processEvents<PayloadType>(anyHandler, from, payload);
     } else {
-      processEvents<EventType>([anyHandler], from, event);
+      processEvents<PayloadType>([anyHandler], from, payload);
     }
   };
 
-  const processEvents = <EventType>(
-    defs: EventDef<ContextType, EventType>[],
+  const processEvents = <PayloadType>(
+    defs: EventDef<ContextType, PayloadType>[],
     from: StateConfig<ContextType>,
-    event: EventType,
+    payload: PayloadType,
   ) => {
     const mutate = (def: EventDef<ContextType>) => {
       if (def.update) {
-        const update = updateContext(currentContext, def, event);
+        const update = updateContext(currentContext, def, payload);
         if (update) {
           currentContext = update;
           isDirty = true;
         }
       } else if (def.replace) {
-        const replacement = def.replace(currentContext, event);
+        const replacement = def.replace(currentContext, payload);
         if (replacement !== currentContext) {
           currentContext = replacement;
           isDirty = true;
@@ -198,20 +198,20 @@ function makeService<ContextType>(
       }
     };
     const tap = (def: EventDef<ContextType>) => {
-      if (def.tap) def.tap(currentContext, event);
+      if (def.tap) def.tap(currentContext, payload);
     };
     const dispatch = (def: EventDef<ContextType>) => {
-      if (typeof def.next === 'string') send(def.next, event);
-      else if (def.next) send(...def.next(currentContext, event));
+      if (typeof def.next === 'string') send(def.next, payload);
+      else if (def.next) send(...def.next(currentContext, payload));
       else if (isDirty) informListeners();
     };
     const transitionOrDispatch = (def: EventDef<ContextType>) => {
-      if (def.target && !def.next) transitionToTarget(def.target, from, event);
+      if (def.target && !def.next) transitionToTarget(def.target, from, payload);
       else if (!def.target && def.next) dispatch(def);
       else if (isDirty) informListeners();
     };
     for (const def of defs) {
-      if (def.cond && def.cond(currentContext, event)) {
+      if (def.cond && def.cond(currentContext, payload)) {
         mutate(def);
         tap(def);
         transitionOrDispatch(def);
@@ -226,34 +226,34 @@ function makeService<ContextType>(
     }
   };
 
-  const send = <EventType=any>(
+  const send = <PayloadType=any>(
     name: string,
-    event: EventType|Promise<EventType>,
+    payload: PayloadType|Promise<PayloadType>,
   ) => {
     const continueWithPayload = (
       eventName: string,
-      eventPayload: EventType|EventErrorType,
+      eventPayload: PayloadType|EventErrorType,
     ) => {
       const [anyHandler, config] = findEventHandlerAndStateConfig(eventName);
       if (anyHandler && config) {
         if (eventPayload && ('error' in eventPayload)) {
           processAnyEventHandler<EventErrorType>(anyHandler, config, eventPayload);
         } else {
-          processAnyEventHandler<EventType>(anyHandler, config, eventPayload);
+          processAnyEventHandler<PayloadType>(anyHandler, config, eventPayload);
         }
       }
     };
 
-    if (event instanceof Promise) {
-      eventPayloadPromises.set(name, event);
+    if (payload instanceof Promise) {
+      eventPayloadPromises.set(name, payload);
       if (isDirty) {
         // In case the event originated in a next, we should transitions before waiting for the promise to resolve
         informListeners();
       }
       (async () => {
         try {
-          const success = await event;
-          if (eventPayloadPromises.get(name) === event) {
+          const success = await payload;
+          if (eventPayloadPromises.get(name) === payload) {
             eventPayloadPromises.delete(name);
             continueWithPayload(name, success);
           }
@@ -263,7 +263,7 @@ function makeService<ContextType>(
         }
       })();
     } else {
-      continueWithPayload(name, event);
+      continueWithPayload(name, payload);
     }
   };
 
