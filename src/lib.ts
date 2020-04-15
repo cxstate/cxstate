@@ -4,16 +4,16 @@ import {
   StateConfig,
 } from './types';
 
-export function rebuildActiveStates<ContextType>(
-  currentState: StateConfig<ContextType>,
-  previousActiveStates: StateConfig<ContextType>[],
-  statePaths: StateConfig<ContextType>[],
+export function rebuildActiveStates<TContext>(
+  currentState: StateConfig<TContext>,
+  previousActiveStates: StateConfig<TContext>[],
+  statePaths: StateConfig<TContext>[],
 ) {
   if (previousActiveStates[previousActiveStates.length-1] === currentState) {
     return previousActiveStates;
   }
   const comps = currentState.path.absolute.split('/').filter(c => c.length);
-  const acc: StateConfig<ContextType>[] = [];
+  const acc: StateConfig<TContext>[] = [];
   for (let i = 1; i <= comps.length; i++) {
     const path = `/${comps.slice(0, i).join('/')}`;
     const parentResult = previousActiveStates.find(sp => sp.path.absolute === path);
@@ -24,14 +24,14 @@ export function rebuildActiveStates<ContextType>(
   return acc;
 }
 
-export function findInitialChildState<ContextType>(
-  ctx: ContextType,
-  statePaths: StateConfig<ContextType>[],
-  parent: StateConfig<ContextType>,
-) :StateConfig<ContextType>|undefined {
+export function findInitialChildState<TContext>(
+  ctx: TContext,
+  statePaths: StateConfig<TContext>[],
+  parent: StateConfig<TContext>,
+) :StateConfig<TContext>|undefined {
   if (hasChildStates(parent.state)) {
     if (parent.state.initial) {
-      let initial = initialStateName<ContextType>(parent.state.initial, ctx);
+      let initial = initialStateName<TContext>(parent.state.initial, ctx);
       const basePath = parent.path.absolute.endsWith('/')
         ? parent.path.absolute
         : `${parent.path.absolute}/`;
@@ -52,13 +52,13 @@ export function findInitialChildState<ContextType>(
   }
 }
 
-function hasChildStates<ContextType>(state: StateDef<ContextType>) :boolean {
+function hasChildStates<TContext>(state: StateDef<TContext>) :boolean {
   return !!(state.states && Object.values(state.states).length);
 }
 
-export function updateContext<ContextType, PayloadType>(
-  ctx: ContextType,
-  def: EventDef<ContextType>,
+export function updateContext<TContext, PayloadType>(
+  ctx: TContext,
+  def: EventDef<TContext>,
   payload?: PayloadType,
 ) {
   const update = {...ctx};
@@ -66,7 +66,7 @@ export function updateContext<ContextType, PayloadType>(
   for (const propName in def.update) {
     const anyFn = def.update[propName];
     if (typeof anyFn === 'function') {
-      const fn = anyFn as (ctx: ContextType, pl?: PayloadType) => any;
+      const fn = anyFn as (ctx: TContext, pl?: PayloadType) => any;
       const changedValue = fn(update, payload);
       if (changedValue !== update[propName]) {
         update[propName] = changedValue;
@@ -77,9 +77,9 @@ export function updateContext<ContextType, PayloadType>(
   if (didUpdate) return update;
 }
 
-export function initialStateName<ContextType>(
-  initial: string|((ctx: ContextType) => string),
-  ctx: ContextType,
+export function initialStateName<TContext>(
+  initial: string|((ctx: TContext) => string),
+  ctx: TContext,
 ) {
   return (typeof initial === 'string') ? initial : initial(ctx);
 }

@@ -4,17 +4,17 @@ import {
   MachineDef,
 } from './types';
 
-export const Event = <ContextType, PayloadType=any, NextPayloadType=any>(def: EventDef<ContextType, PayloadType, NextPayloadType>) => def;
-export const Next = <ContextType, PayloadType, NextPayloadType>(fn: (ctx: ContextType, inputPayload: PayloadType) => [string, NextPayloadType]) => fn;
-export const State = <ContextType>(def: StateDef<ContextType>) => def;
-export const Machine = <ContextType>(def: MachineDef<ContextType>) => def;
+export const Event = <TContext, TPayload=any, TNextPayload=any>(def: EventDef<TContext, TPayload, TNextPayload>) => def;
+export const Next = <TContext, TPayload, TNextPayload>(fn: (ctx: TContext, inputPayload: TPayload) => [string, TNextPayload]) => fn;
+export const State = <TContext>(def: StateDef<TContext>) => def;
+export const Machine = <TContext>(def: MachineDef<TContext>) => def;
 
-export const DeferredNextEvent = <ContextType=any, PayloadType=any, NextPayloadType=void>(
+export const DeferredNextEvent = <TContext=any, TPayload=any, TNextPayload=void>(
   nextEventName: string,
-  deferredFn: (ctx: ContextType, payload: PayloadType) => Promise<NextPayloadType>,
-) => Event<ContextType, PayloadType>({
-  next: Next<ContextType, PayloadType, Promise<NextPayloadType>>(
-    (ctx: ContextType, payload: PayloadType) => [
+  deferredFn: (ctx: TContext, payload: TPayload) => Promise<TNextPayload>,
+) => Event<TContext, TPayload>({
+  next: Next<TContext, TPayload, Promise<TNextPayload>>(
+    (ctx: TContext, payload: TPayload) => [
       nextEventName,
       deferredFn(ctx, payload),
     ],

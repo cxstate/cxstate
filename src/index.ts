@@ -19,14 +19,15 @@ import {
 /**
  * Internprets a machine-definition. Returns a ready to use machine-service.
  */
-export function interpret<ContextType>(machineDef: MachineDef<ContextType>)
-:Service<ContextType> {
-  const stateConfigs: StateConfig<ContextType>[] = [];
+export function interpret<TContext>(
+  machineDef: MachineDef<TContext>,
+) :Service<TContext> {
+  const stateConfigs: StateConfig<TContext>[] = [];
 
   const buildStateConfigs = (
     basePath: string,
     name: string,
-    state: StateDef<ContextType>,
+    state: StateDef<TContext>,
   ) => {
     const absolute = resolvePath(basePath, name);
     stateConfigs.push({state, path: {name, absolute}});
@@ -36,7 +37,7 @@ export function interpret<ContextType>(machineDef: MachineDef<ContextType>)
       if (!state.initial) throw new Error(`State "${absolute}" has child-states, but doesn't define initial`);
       // Check minimum validity of events
       if (state.on) Object.entries(state.on).forEach(([eventName, eventDef]) => {
-        const checkEvent = (ed: string|EventDef<ContextType>) => {
+        const checkEvent = (ed: string|EventDef<TContext>) => {
           if (typeof ed !== 'string') {
             if (ed.replace && ed.update) throw new Error(`State"${absolute}" / Event "${eventName}": <replace> and <update> are mutually exclusive`);
             if (ed.target && ed.next) throw new Error(`State"${absolute}" / Event "${eventName}": <target> and <next> are mutually exclusive`);
@@ -56,7 +57,7 @@ export function interpret<ContextType>(machineDef: MachineDef<ContextType>)
     buildStateConfigs('/', stateName, stateDef);
   }
 
-  let initial = initialStateName<ContextType>(machineDef.initial, machineDef.context);
+  let initial = initialStateName<TContext>(machineDef.initial, machineDef.context);
   const initialAbsPath = initial.startsWith('/') ? initial : `/${initial}`;
   let initialState = stateConfigs.find(sp => sp.path.absolute === initialAbsPath);
   if (initialState) {
@@ -70,15 +71,15 @@ export function interpret<ContextType>(machineDef: MachineDef<ContextType>)
   }
 }
 
-function makeService<ContextType>(
-  stateConfigs: StateConfig<ContextType>[],
-  initialContext: ContextType,
-  initialState: StateConfig<ContextType>,
-) :Service<ContextType> {
-  let activeStates: StateConfig<ContextType>[] =
-    rebuildActiveStates<ContextType>(initialState, [], stateConfigs);
-  let currentContext: ContextType = initialContext;
-  const listeners: OnTransitionFn<ContextType>[] = [];
+function makeService<TContext>(
+  stateConfigs: StateConfig<TContext>[],
+  initialContext: TContext,
+  initialState: StateConfig<TContext>,
+) :Service<TContext> {
+  let activeStates: StateConfig<TContext>[] =
+    rebuildActiveStates<TContext>(initialState, [], stateConfigs);
+  let currentContext: TContext = initialContext;
+  const listeners: OnTransitionFn<TContext>[] = [];
   let matcherMemoization: {[key:string]: {result: boolean}} = {};
   const eventPayloadPromises = new Map<string, Promise<any>>();
   let isDirty: boolean = true;
@@ -87,8 +88,8 @@ function makeService<ContextType>(
 
   const findEventHandlerAndStateConfig = (eventName: string)
   :[
-    string|EventDef<ContextType>|EventDef<ContextType>[]|null,
-    StateConfig<ContextType>|null,
+    string|EventDef<TContext>|EventDef<TContext>[]|null,
+    StateConfig<TContext>|null,
   ] => {
     for(let i = activeStates.length; i--;) {
       const config = activeStates[i];
@@ -109,7 +110,7 @@ function makeService<ContextType>(
 
   // TRANSITION HANDLING
 
-  const onTransition = (callback: OnTransitionFn<ContextType>) => {
+  const onTransition = (callback: OnTransitionFn<TContext>) => {
     listeners.push(callback);
     return () => {
       const idx = listeners.indexOf(callback);
@@ -118,17 +119,17 @@ function makeService<ContextType>(
   };
 
   // from: state path in which the event handler was found
-  const transitionToTarget = <PayloadType>(
+  const transitionToTarget = <TPayload>(
     target: string,
-    from: StateConfig<ContextType>,
-    srcPayload: PayloadType,
+    from: StateConfig<TContext>,
+    srcPayload: TPayload,
   ) => {
     if (target) {
       const fsp = from.path;
       const targetPath = resolvePath(`${fsp.absolute}/`, target);
       const targetConfig = stateConfigs.find(sc => sc.path.absolute === targetPath);
       if (targetConfig) {
-        transitionToState<PayloadType>(targetConfig, srcPayload);
+        transitionToState<TPayload>(targetConfig, srcPayload);
       } else {
         throw new Error(`No state defined for path "${targetPath}"`);
       }
@@ -139,50 +140,50 @@ function makeService<ContextType>(
 
   // ACTIVE STATE HANDLING
 
-  const transitionToState = <PayloadType>(
-    parent: StateConfig<ContextType>,
-    srcPayload: PayloadType,
+  const transitionToState = <TPayload>(
+    parent: StateConfig<TContext>,
+    srcPayload: TPayload,
   ) => {
     const child = findInitialChildState(currentContext, stateConfigs, parent);
     const transitionTargetState = child ? child : parent;
     const rebuiltActiveStates =
-      rebuildActiveStates<ContextType>(transitionTargetState, activeStates, stateConfigs);
+      rebuildActiveStates<TContext>(transitionTargetState, activeStates, stateConfigs);
     if (rebuiltActiveStates !== activeStates) {
       activeStates = rebuiltActiveStates;
       matcherMemoization = {};
       isDirty = true;
-      processCurrentStateEntryEvent<PayloadType>(srcPayload);
+      processCurrentStateEntryEvent<TPayload>(srcPayload);
     } /* TODO: temporary state. Else case is important for it. */
     if (isDirty) informListeners();
   };
 
   // EVENT PROCESSING
 
-  const processCurrentStateEntryEvent = <PayloadType=any>(srcPayload: PayloadType) => {
+  const processCurrentStateEntryEvent = <TPayload=any>(srcPayload: TPayload) => {
     const cs = currentState();
-    if (cs.state.entry) processAnyEventHandler<PayloadType>(cs.state.entry, cs, srcPayload);
+    if (cs.state.entry) processAnyEventHandler<TPayload>(cs.state.entry, cs, srcPayload);
   };
 
-  const processAnyEventHandler = <PayloadType=AnalyserNode>(
-    anyHandler: string|EventDef<ContextType>|EventDef<ContextType>[],
-    from: StateConfig<ContextType>,
-    payload: PayloadType,
+  const processAnyEventHandler = <TPayload=AnalyserNode>(
+    anyHandler: string|EventDef<TContext>|EventDef<TContext>[],
+    from: StateConfig<TContext>,
+    payload: TPayload,
   ) => {
     if (typeof anyHandler === 'string') {
-      transitionToTarget<PayloadType>(anyHandler, from, payload);
+      transitionToTarget<TPayload>(anyHandler, from, payload);
     } else if (anyHandler instanceof Array) {
-      processEvents<PayloadType>(anyHandler, from, payload);
+      processEvents<TPayload>(anyHandler, from, payload);
     } else {
-      processEvents<PayloadType>([anyHandler], from, payload);
+      processEvents<TPayload>([anyHandler], from, payload);
     }
   };
 
-  const processEvents = <PayloadType>(
-    defs: EventDef<ContextType, PayloadType>[],
-    from: StateConfig<ContextType>,
-    payload: PayloadType,
+  const processEvents = <TPayload>(
+    defs: EventDef<TContext, TPayload>[],
+    from: StateConfig<TContext>,
+    payload: TPayload,
   ) => {
-    const mutate = (def: EventDef<ContextType>) => {
+    const mutate = (def: EventDef<TContext>) => {
       if (def.update) {
         const update = updateContext(currentContext, def, payload);
         if (update) {
@@ -197,15 +198,15 @@ function makeService<ContextType>(
         }
       }
     };
-    const tap = (def: EventDef<ContextType>) => {
+    const tap = (def: EventDef<TContext>) => {
       if (def.tap) def.tap(currentContext, payload);
     };
-    const dispatch = (def: EventDef<ContextType>) => {
+    const dispatch = (def: EventDef<TContext>) => {
       if (typeof def.next === 'string') send(def.next, payload);
       else if (def.next) send(...def.next(currentContext, payload));
       else if (isDirty) informListeners();
     };
-    const transitionOrDispatch = (def: EventDef<ContextType>) => {
+    const transitionOrDispatch = (def: EventDef<TContext>) => {
       if (def.target && !def.next) transitionToTarget(def.target, from, payload);
       else if (!def.target && def.next) dispatch(def);
       else if (isDirty) informListeners();
@@ -226,20 +227,20 @@ function makeService<ContextType>(
     }
   };
 
-  const send = <PayloadType=any>(
+  const send = <TPayload=any>(
     name: string,
-    payload: PayloadType|Promise<PayloadType>,
+    payload: TPayload|Promise<TPayload>,
   ) => {
     const continueWithPayload = (
       eventName: string,
-      eventPayload: PayloadType|EventErrorType,
+      eventPayload: TPayload|EventErrorType,
     ) => {
       const [anyHandler, config] = findEventHandlerAndStateConfig(eventName);
       if (anyHandler && config) {
         if (eventPayload && ('error' in eventPayload)) {
           processAnyEventHandler<EventErrorType>(anyHandler, config, eventPayload);
         } else {
-          processAnyEventHandler<PayloadType>(anyHandler, config, eventPayload);
+          processAnyEventHandler<TPayload>(anyHandler, config, eventPayload);
         }
       }
     };
@@ -313,7 +314,7 @@ function makeService<ContextType>(
   };
 
   return {
-    context: () => currentContext as Readonly<ContextType>,
+    context: () => currentContext as Readonly<TContext>,
     path: () => currentState().path.absolute,
     send,
     matchesOne: (...paths: string[]) => matches(true, paths),
