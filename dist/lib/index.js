@@ -136,13 +136,13 @@ function makeService(stateConfigs, initialContext, initialState) {
         };
     };
     // from: state path in which the event handler was found
-    var transitionToTarget = function (target, from, srcEvent) {
+    var transitionToTarget = function (target, from, srcPayload) {
         if (target) {
             var fsp = from.path;
             var targetPath_1 = lib_1.resolvePath(fsp.absolute + "/", target);
             var targetConfig = stateConfigs.find(function (sc) { return sc.path.absolute === targetPath_1; });
             if (targetConfig) {
-                transitionToState(targetConfig, srcEvent);
+                transitionToState(targetConfig, srcPayload);
             }
             else {
                 throw new Error("No state defined for path \"" + targetPath_1 + "\"");
@@ -153,7 +153,7 @@ function makeService(stateConfigs, initialContext, initialState) {
         }
     };
     // ACTIVE STATE HANDLING
-    var transitionToState = function (parent, srcEvent) {
+    var transitionToState = function (parent, srcPayload) {
         var child = lib_1.findInitialChildState(currentContext, stateConfigs, parent);
         var transitionTargetState = child ? child : parent;
         var rebuiltActiveStates = lib_1.rebuildActiveStates(transitionTargetState, activeStates, stateConfigs);
@@ -161,39 +161,39 @@ function makeService(stateConfigs, initialContext, initialState) {
             activeStates = rebuiltActiveStates;
             matcherMemoization = {};
             isDirty = true;
-            processCurrentStateEntryEvent(srcEvent);
+            processCurrentStateEntryEvent(srcPayload);
         } /* TODO: temporary state. Else case is important for it. */
         if (isDirty)
             informListeners();
     };
     // EVENT PROCESSING
-    var processCurrentStateEntryEvent = function (srcEvent) {
+    var processCurrentStateEntryEvent = function (srcPayload) {
         var cs = currentState();
         if (cs.state.entry)
-            processAnyEventHandler(cs.state.entry, cs, srcEvent);
+            processAnyEventHandler(cs.state.entry, cs, srcPayload);
     };
-    var processAnyEventHandler = function (anyHandler, from, event) {
+    var processAnyEventHandler = function (anyHandler, from, payload) {
         if (typeof anyHandler === 'string') {
-            transitionToTarget(anyHandler, from, event);
+            transitionToTarget(anyHandler, from, payload);
         }
         else if (anyHandler instanceof Array) {
-            processEvents(anyHandler, from, event);
+            processEvents(anyHandler, from, payload);
         }
         else {
-            processEvents([anyHandler], from, event);
+            processEvents([anyHandler], from, payload);
         }
     };
-    var processEvents = function (defs, from, event) {
+    var processEvents = function (defs, from, payload) {
         var mutate = function (def) {
             if (def.update) {
-                var update = lib_1.updateContext(currentContext, def, event);
+                var update = lib_1.updateContext(currentContext, def, payload);
                 if (update) {
                     currentContext = update;
                     isDirty = true;
                 }
             }
             else if (def.replace) {
-                var replacement = def.replace(currentContext, event);
+                var replacement = def.replace(currentContext, payload);
                 if (replacement !== currentContext) {
                     currentContext = replacement;
                     isDirty = true;
@@ -202,19 +202,19 @@ function makeService(stateConfigs, initialContext, initialState) {
         };
         var tap = function (def) {
             if (def.tap)
-                def.tap(currentContext, event);
+                def.tap(currentContext, payload);
         };
         var dispatch = function (def) {
             if (typeof def.next === 'string')
-                send(def.next, event);
+                send(def.next, payload);
             else if (def.next)
-                send.apply(void 0, def.next(currentContext, event));
+                send.apply(void 0, def.next(currentContext, payload));
             else if (isDirty)
                 informListeners();
         };
         var transitionOrDispatch = function (def) {
             if (def.target && !def.next)
-                transitionToTarget(def.target, from, event);
+                transitionToTarget(def.target, from, payload);
             else if (!def.target && def.next)
                 dispatch(def);
             else if (isDirty)
@@ -222,7 +222,7 @@ function makeService(stateConfigs, initialContext, initialState) {
         };
         for (var _i = 0, defs_1 = defs; _i < defs_1.length; _i++) {
             var def = defs_1[_i];
-            if (def.cond && def.cond(currentContext, event)) {
+            if (def.cond && def.cond(currentContext, payload)) {
                 mutate(def);
                 tap(def);
                 transitionOrDispatch(def);
@@ -238,7 +238,7 @@ function makeService(stateConfigs, initialContext, initialState) {
             }
         }
     };
-    var send = function (name, event) {
+    var send = function (name, payload) {
         var continueWithPayload = function (eventName, eventPayload) {
             var _a = findEventHandlerAndStateConfig(eventName), anyHandler = _a[0], config = _a[1];
             if (anyHandler && config) {
@@ -250,8 +250,8 @@ function makeService(stateConfigs, initialContext, initialState) {
                 }
             }
         };
-        if (event instanceof Promise) {
-            eventPayloadPromises.set(name, event);
+        if (payload instanceof Promise) {
+            eventPayloadPromises.set(name, payload);
             if (isDirty) {
                 // In case the event originated in a next, we should transitions before waiting for the promise to resolve
                 informListeners();
@@ -262,10 +262,10 @@ function makeService(stateConfigs, initialContext, initialState) {
                     switch (_a.label) {
                         case 0:
                             _a.trys.push([0, 2, , 3]);
-                            return [4 /*yield*/, event];
+                            return [4 /*yield*/, payload];
                         case 1:
                             success = _a.sent();
-                            if (eventPayloadPromises.get(name) === event) {
+                            if (eventPayloadPromises.get(name) === payload) {
                                 eventPayloadPromises.delete(name);
                                 continueWithPayload(name, success);
                             }
@@ -281,7 +281,7 @@ function makeService(stateConfigs, initialContext, initialState) {
             }); })();
         }
         else {
-            continueWithPayload(name, event);
+            continueWithPayload(name, payload);
         }
     };
     processCurrentStateEntryEvent({});

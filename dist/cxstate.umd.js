@@ -125,14 +125,14 @@
     function hasChildStates(state) {
         return !!(state.states && Object.values(state.states).length);
     }
-    function updateContext(ctx, def, event) {
+    function updateContext(ctx, def, payload) {
         var update = __assign({}, ctx);
         var didUpdate = false;
         for (var propName in def.update) {
             var anyFn = def.update[propName];
             if (typeof anyFn === 'function') {
                 var fn = anyFn;
-                var changedValue = fn(update, event);
+                var changedValue = fn(update, payload);
                 if (changedValue !== update[propName]) {
                     update[propName] = changedValue;
                     didUpdate = true;
@@ -244,13 +244,13 @@
             };
         };
         // from: state path in which the event handler was found
-        var transitionToTarget = function (target, from, srcEvent) {
+        var transitionToTarget = function (target, from, srcPayload) {
             if (target) {
                 var fsp = from.path;
                 var targetPath_1 = resolvePath(fsp.absolute + "/", target);
                 var targetConfig = stateConfigs.find(function (sc) { return sc.path.absolute === targetPath_1; });
                 if (targetConfig) {
-                    transitionToState(targetConfig, srcEvent);
+                    transitionToState(targetConfig, srcPayload);
                 }
                 else {
                     throw new Error("No state defined for path \"" + targetPath_1 + "\"");
@@ -261,7 +261,7 @@
             }
         };
         // ACTIVE STATE HANDLING
-        var transitionToState = function (parent, srcEvent) {
+        var transitionToState = function (parent, srcPayload) {
             var child = findInitialChildState(currentContext, stateConfigs, parent);
             var transitionTargetState = child ? child : parent;
             var rebuiltActiveStates = rebuildActiveStates(transitionTargetState, activeStates, stateConfigs);
@@ -269,39 +269,39 @@
                 activeStates = rebuiltActiveStates;
                 matcherMemoization = {};
                 isDirty = true;
-                processCurrentStateEntryEvent(srcEvent);
+                processCurrentStateEntryEvent(srcPayload);
             } /* TODO: temporary state. Else case is important for it. */
             if (isDirty)
                 informListeners();
         };
         // EVENT PROCESSING
-        var processCurrentStateEntryEvent = function (srcEvent) {
+        var processCurrentStateEntryEvent = function (srcPayload) {
             var cs = currentState();
             if (cs.state.entry)
-                processAnyEventHandler(cs.state.entry, cs, srcEvent);
+                processAnyEventHandler(cs.state.entry, cs, srcPayload);
         };
-        var processAnyEventHandler = function (anyHandler, from, event) {
+        var processAnyEventHandler = function (anyHandler, from, payload) {
             if (typeof anyHandler === 'string') {
-                transitionToTarget(anyHandler, from, event);
+                transitionToTarget(anyHandler, from, payload);
             }
             else if (anyHandler instanceof Array) {
-                processEvents(anyHandler, from, event);
+                processEvents(anyHandler, from, payload);
             }
             else {
-                processEvents([anyHandler], from, event);
+                processEvents([anyHandler], from, payload);
             }
         };
-        var processEvents = function (defs, from, event) {
+        var processEvents = function (defs, from, payload) {
             var mutate = function (def) {
                 if (def.update) {
-                    var update = updateContext(currentContext, def, event);
+                    var update = updateContext(currentContext, def, payload);
                     if (update) {
                         currentContext = update;
                         isDirty = true;
                     }
                 }
                 else if (def.replace) {
-                    var replacement = def.replace(currentContext, event);
+                    var replacement = def.replace(currentContext, payload);
                     if (replacement !== currentContext) {
                         currentContext = replacement;
                         isDirty = true;
@@ -310,19 +310,19 @@
             };
             var tap = function (def) {
                 if (def.tap)
-                    def.tap(currentContext, event);
+                    def.tap(currentContext, payload);
             };
             var dispatch = function (def) {
                 if (typeof def.next === 'string')
-                    send(def.next, event);
+                    send(def.next, payload);
                 else if (def.next)
-                    send.apply(void 0, def.next(currentContext, event));
+                    send.apply(void 0, def.next(currentContext, payload));
                 else if (isDirty)
                     informListeners();
             };
             var transitionOrDispatch = function (def) {
                 if (def.target && !def.next)
-                    transitionToTarget(def.target, from, event);
+                    transitionToTarget(def.target, from, payload);
                 else if (!def.target && def.next)
                     dispatch(def);
                 else if (isDirty)
@@ -330,7 +330,7 @@
             };
             for (var _i = 0, defs_1 = defs; _i < defs_1.length; _i++) {
                 var def = defs_1[_i];
-                if (def.cond && def.cond(currentContext, event)) {
+                if (def.cond && def.cond(currentContext, payload)) {
                     mutate(def);
                     tap(def);
                     transitionOrDispatch(def);
@@ -346,7 +346,7 @@
                 }
             }
         };
-        var send = function (name, event) {
+        var send = function (name, payload) {
             var continueWithPayload = function (eventName, eventPayload) {
                 var _a = findEventHandlerAndStateConfig(eventName), anyHandler = _a[0], config = _a[1];
                 if (anyHandler && config) {
@@ -358,8 +358,8 @@
                     }
                 }
             };
-            if (event instanceof Promise) {
-                eventPayloadPromises.set(name, event);
+            if (payload instanceof Promise) {
+                eventPayloadPromises.set(name, payload);
                 if (isDirty) {
                     // In case the event originated in a next, we should transitions before waiting for the promise to resolve
                     informListeners();
@@ -370,10 +370,10 @@
                         switch (_a.label) {
                             case 0:
                                 _a.trys.push([0, 2, , 3]);
-                                return [4 /*yield*/, event];
+                                return [4 /*yield*/, payload];
                             case 1:
                                 success = _a.sent();
-                                if (eventPayloadPromises.get(name) === event) {
+                                if (eventPayloadPromises.get(name) === payload) {
                                     eventPayloadPromises.delete(name);
                                     continueWithPayload(name, success);
                                 }
@@ -389,7 +389,7 @@
                 }); })();
             }
             else {
-                continueWithPayload(name, event);
+                continueWithPayload(name, payload);
             }
         };
         processCurrentStateEntryEvent({});
@@ -458,6 +458,7 @@
         };
     }
 
+    // Machine definition typing helper functions
     var Event = function (def) { return def; };
     var Next = function (fn) { return fn; };
     var State = function (def) { return def; };
@@ -468,6 +469,41 @@
             deferredFn(ctx, payload),
         ]; }),
     }); };
+    // Parallel service constructor
+    var parallelize = function () {
+        var services = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            services[_i] = arguments[_i];
+        }
+        var context = function () {
+            return Object.assign.apply(Object, __spreadArrays([{}], services.map(function (s) { return s.context(); })));
+        };
+        var paths = function () { return services.map(function (s) { return s.path(); }); };
+        var send = function (name, payload) {
+            return services.forEach(function (s) { return s.send(name, payload); });
+        };
+        var makeMatchesFn = function (positivMatchValue, fns) { return function () {
+            var paths = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                paths[_i] = arguments[_i];
+            }
+            for (var _a = 0, fns_1 = fns; _a < fns_1.length; _a++) {
+                var fn = fns_1[_a];
+                if (fn.apply(void 0, paths))
+                    return positivMatchValue;
+            }
+            return !positivMatchValue;
+        }; };
+        var matchesOne = makeMatchesFn(true, services.map(function (s) { return s.matchesOne; }));
+        var matchesNone = makeMatchesFn(false, services.map(function (s) { return s.matchesNone; }));
+        var onTransition = function (callback) {
+            var unsubscribers = services.map(function (s) { return s.onTransition(function () {
+                callback(context(), paths());
+            }); });
+            return function () { return unsubscribers.forEach(function (u) { return u(); }); };
+        };
+        return { context: context, paths: paths, send: send, matchesOne: matchesOne, matchesNone: matchesNone, onTransition: onTransition };
+    };
 
     exports.interpret = interpret;
     exports.Event = Event;
@@ -475,6 +511,7 @@
     exports.State = State;
     exports.Machine = Machine;
     exports.DeferredNextEvent = DeferredNextEvent;
+    exports.parallelize = parallelize;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

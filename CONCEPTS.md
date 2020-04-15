@@ -44,5 +44,8 @@ In CxState a common pattern is to build short event sequences in order to reuse 
 
 Asynchronous behavior is supported by sending events that have promises as payload. The event will fire when the promise resolves or rejects. If another promise is fired for the same event name, before the previous promise could resolve, the new promise will replace the old one. Only the most recent promise sent for a specific event will be handed over to the event handler. This helps in implementing event debouncing. If this behavior is not desired, the promise must be sent wrapped in an event (payload not an instance of `Promise`). The receiving event can then transition into a specific state before passing the promise itself on as payload. Thus it's possible to easily define a concise state in which the machine is remaining while waiting for an asynchronous operation to complete (CxState's simplification for the XState's service invocations).
 
+## Using several machines in parallel like 1
+
+Some use cases require that a given module can be in more than one state at the same time. To accommodate this, CxState machines can be combined after interpretation (parallelized) and used like one.
 
 [WHY CXSTATE](WHY-CXSTATE.md) · [EXAMPLES](EXAMPLES.md) · [API](docs) · [README](README.md)

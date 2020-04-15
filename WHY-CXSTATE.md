@@ -67,7 +67,7 @@ Most of this complexity unfortunately is not meaningful for 95% of the ways you'
 
 > Machines · States · Context · Context mutation · Events · State transitions · Event composition sequences · Deferred events
 
-CxStates API is for the most part very similar to the one of XState. However CxState replaces the concept of invoking services with **deferred events** and **event sequences**. By that reducing the complexity of a machine definition together with the LOCs. Though CxState doesn't support parallel states within one machine; but due to it's efficiency has enough headroom to allow for two separate machines in place of one.
+CxStates API is for the most part very similar to the one of XState. However CxState replaces the concept of invoking services with **deferred events** and **event sequences**. By that reducing the complexity of a machine definition together with the LOCs. CxState doesn't support parallel states within one machine; but due to it's efficiency has enough headroom to allow for two separate machines in place of one. To accommodate this, 2 or more machines can be "parallelized" (combined) and used like one.
 
 ### 4. Better composability
 

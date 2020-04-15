@@ -56,17 +56,17 @@ function hasChildStates<TContext>(state: StateDef<TContext>) :boolean {
   return !!(state.states && Object.values(state.states).length);
 }
 
-export function updateContext<TContext, PayloadType>(
+export function updateContext<TContext, TPayload>(
   ctx: TContext,
   def: EventDef<TContext>,
-  payload?: PayloadType,
+  payload?: TPayload,
 ) {
   const update = {...ctx};
   let didUpdate = false;
   for (const propName in def.update) {
     const anyFn = def.update[propName];
     if (typeof anyFn === 'function') {
-      const fn = anyFn as (ctx: TContext, pl?: PayloadType) => any;
+      const fn = anyFn as (ctx: TContext, pl?: TPayload) => any;
       const changedValue = fn(update, payload);
       if (changedValue !== update[propName]) {
         update[propName] = changedValue;

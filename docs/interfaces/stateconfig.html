@@ -2722,9 +2722,6 @@ img {
 <nav class="tsd-navigation secondary">
 	<ul>
 		<li class=" tsd-kind-interface tsd-has-type-parameter">
-			<a href="currentmachinestate.html" class="tsd-kind-icon">Current<wbr>Machine<wbr>State</a>
-		</li>
-		<li class=" tsd-kind-interface tsd-has-type-parameter">
 			<a href="eventdef.html" class="tsd-kind-icon">Event<wbr>Def</a>
 		</li>
 		<li class=" tsd-kind-interface">
@@ -2734,7 +2731,13 @@ img {
 			<a href="machinedef.html" class="tsd-kind-icon">Machine<wbr>Def</a>
 		</li>
 		<li class=" tsd-kind-interface tsd-has-type-parameter">
+			<a href="parallelservice.html" class="tsd-kind-icon">Parallel<wbr>Service</a>
+		</li>
+		<li class=" tsd-kind-interface tsd-has-type-parameter">
 			<a href="service.html" class="tsd-kind-icon">Service</a>
+		</li>
+		<li class=" tsd-kind-interface tsd-has-type-parameter">
+			<a href="servicebase.html" class="tsd-kind-icon">Service<wbr>Base</a>
 		</li>
 		<li class="current tsd-kind-interface tsd-has-type-parameter">
 			<a href="stateconfig.html" class="tsd-kind-icon">State<wbr>Config</a>
@@ -2752,6 +2755,9 @@ img {
 		</li>
 		<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 			<a href="../globals.html#childstatesdef" class="tsd-kind-icon">Child<wbr>States<wbr>Def</a>
+		</li>
+		<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+			<a href="../globals.html#onparalleltransitionfn" class="tsd-kind-icon">On<wbr>Parallel<wbr>Transition<wbr>Fn</a>
 		</li>
 		<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 			<a href="../globals.html#ontransitionfn" class="tsd-kind-icon">On<wbr>Transition<wbr>Fn</a>
@@ -2793,6 +2799,9 @@ img {
 			<a href="../globals.html#makeservice" class="tsd-kind-icon">make<wbr>Service</a>
 		</li>
 		<li class=" tsd-kind-function tsd-has-type-parameter">
+			<a href="../globals.html#parallelize" class="tsd-kind-icon">parallelize</a>
+		</li>
+		<li class=" tsd-kind-function tsd-has-type-parameter">
 			<a href="../globals.html#rebuildactivestates" class="tsd-kind-icon">rebuild<wbr>Active<wbr>States</a>
 		</li>
 		<li class=" tsd-kind-function">
@@ -2809,7 +2818,7 @@ img {
 			<h3>Type parameters</h3>
 			<ul class="tsd-type-parameters">
 				<li>
-					<h4>ContextType</h4>
+					<h4>TContext</h4>
 				</li>
 			</ul>
 		</section>
@@ -2843,7 +2852,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>absolute<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/types.ts#L59">types.ts:59</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/e389fb0/src/types.ts#L65">types.ts:65</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-type-declaration">
@@ -2861,10 +2870,10 @@ img {
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 				<a name="state" class="tsd-anchor"></a>
 				<h3>state</h3>
-				<div class="tsd-signature tsd-kind-icon">state<span class="tsd-signature-symbol">:</span> <a href="statedef.html" class="tsd-signature-type">StateDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span></div>
+				<div class="tsd-signature tsd-kind-icon">state<span class="tsd-signature-symbol">:</span> <a href="statedef.html" class="tsd-signature-type">StateDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/types.ts#L58">types.ts:58</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/e389fb0/src/types.ts#L64">types.ts:64</a></li>
 					</ul>
 				</aside>
 			</section>

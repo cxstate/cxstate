@@ -1,6 +1,10 @@
+// Update
+
 type UpdatePartialDef<TContext, TPayload> = {
     [P in keyof TContext]?: (ctx: TContext, pl: TPayload) => TContext[P];
 }
+
+// Events
 
 export interface EventDef<TContext, TPayload=any, TNextPayload=any> {
   /**
@@ -45,7 +49,9 @@ export interface EventErrorType {
   error: Error
 }
 
-type ChildStatesDef<TContext> = { [key: string]: StateDef<TContext> };
+// States
+
+export type ChildStatesDef<TContext> = { [key: string]: StateDef<TContext> };
 
 export interface StateDef<TContext> {
   initial?: string|((ctx: TContext) => string)
@@ -59,27 +65,36 @@ export interface StateConfig<TContext> {
   path: {name: string, absolute: string}
 }
 
+// Machines
+
 export interface MachineDef<TContext> {
   context: TContext
   initial: string|((ctx: TContext) => string)
   states: ChildStatesDef<TContext>
 }
 
-export type SendFn = <TPayload=any>(name: string, payload?: TPayload|Promise<TPayload>) => void;
-export type OnTransitionFn<TContext> = (ctx: TContext, path: string) => void;
+// Functions
 
-export interface Service<TContext> {
+export type SendFn = <TPayload=any>(name: string, payload?: TPayload|Promise<TPayload>) => void;
+
+export type OnTransitionFn<TContext> = (ctx: TContext, path: string) => void;
+export type OnParallelTransitionFn<TContext> = (ctx: TContext, paths: string[]) => void;
+
+// Services
+
+interface ServiceBase<TContext> {
   context: () => Readonly<TContext>
-  path: () => string
   send: SendFn
   matchesOne: (...paths: string[]) => boolean,
   matchesNone: (...paths: string[]) => boolean,
+}
+
+export interface Service<TContext> extends ServiceBase<TContext> {
+  path: () => string
   onTransition: (callback: OnTransitionFn<TContext>) => () => void
 }
 
-export interface CurrentMachineState<TContext> {
-  context: Readonly<TContext>
-  path: string
-  matchesOne: (...paths: string[]) => boolean
-  matchesNone: (...paths: string[]) => boolean
+export interface ParallelService<TContext> extends ServiceBase<TContext> {
+  paths: () => string[]
+  onTransition: (callback: OnParallelTransitionFn<TContext>) => () => void
 }

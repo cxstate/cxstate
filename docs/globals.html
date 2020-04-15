@@ -2722,9 +2722,6 @@ img {
 <nav class="tsd-navigation secondary">
 	<ul>
 		<li class=" tsd-kind-interface tsd-has-type-parameter">
-			<a href="interfaces/currentmachinestate.html" class="tsd-kind-icon">Current<wbr>Machine<wbr>State</a>
-		</li>
-		<li class=" tsd-kind-interface tsd-has-type-parameter">
 			<a href="interfaces/eventdef.html" class="tsd-kind-icon">Event<wbr>Def</a>
 		</li>
 		<li class=" tsd-kind-interface">
@@ -2734,7 +2731,13 @@ img {
 			<a href="interfaces/machinedef.html" class="tsd-kind-icon">Machine<wbr>Def</a>
 		</li>
 		<li class=" tsd-kind-interface tsd-has-type-parameter">
+			<a href="interfaces/parallelservice.html" class="tsd-kind-icon">Parallel<wbr>Service</a>
+		</li>
+		<li class=" tsd-kind-interface tsd-has-type-parameter">
 			<a href="interfaces/service.html" class="tsd-kind-icon">Service</a>
+		</li>
+		<li class=" tsd-kind-interface tsd-has-type-parameter">
+			<a href="interfaces/servicebase.html" class="tsd-kind-icon">Service<wbr>Base</a>
 		</li>
 		<li class=" tsd-kind-interface tsd-has-type-parameter">
 			<a href="interfaces/stateconfig.html" class="tsd-kind-icon">State<wbr>Config</a>
@@ -2744,6 +2747,9 @@ img {
 		</li>
 		<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 			<a href="globals.html#childstatesdef" class="tsd-kind-icon">Child<wbr>States<wbr>Def</a>
+		</li>
+		<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+			<a href="globals.html#onparalleltransitionfn" class="tsd-kind-icon">On<wbr>Parallel<wbr>Transition<wbr>Fn</a>
 		</li>
 		<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 			<a href="globals.html#ontransitionfn" class="tsd-kind-icon">On<wbr>Transition<wbr>Fn</a>
@@ -2783,6 +2789,9 @@ img {
 		</li>
 		<li class=" tsd-kind-function tsd-has-type-parameter">
 			<a href="globals.html#makeservice" class="tsd-kind-icon">make<wbr>Service</a>
+		</li>
+		<li class=" tsd-kind-function tsd-has-type-parameter">
+			<a href="globals.html#parallelize" class="tsd-kind-icon">parallelize</a>
 		</li>
 		<li class=" tsd-kind-function tsd-has-type-parameter">
 			<a href="globals.html#rebuildactivestates" class="tsd-kind-icon">rebuild<wbr>Active<wbr>States</a>
@@ -2875,11 +2884,12 @@ send&lt;DoEvent&gt;('DO_SOMETHING', {value: 'a value'});
 					<section class="tsd-index-section ">
 						<h3>Interfaces</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/currentmachinestate.html" class="tsd-kind-icon">Current<wbr>Machine<wbr>State</a></li>
 							<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/eventdef.html" class="tsd-kind-icon">Event<wbr>Def</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/eventerrortype.html" class="tsd-kind-icon">Event<wbr>Error<wbr>Type</a></li>
 							<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/machinedef.html" class="tsd-kind-icon">Machine<wbr>Def</a></li>
+							<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/parallelservice.html" class="tsd-kind-icon">Parallel<wbr>Service</a></li>
 							<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/service.html" class="tsd-kind-icon">Service</a></li>
+							<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/servicebase.html" class="tsd-kind-icon">Service<wbr>Base</a></li>
 							<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/stateconfig.html" class="tsd-kind-icon">State<wbr>Config</a></li>
 							<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/statedef.html" class="tsd-kind-icon">State<wbr>Def</a></li>
 						</ul>
@@ -2888,6 +2898,7 @@ send&lt;DoEvent&gt;('DO_SOMETHING', {value: 'a value'});
 						<h3>Type aliases</h3>
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#childstatesdef" class="tsd-kind-icon">Child<wbr>States<wbr>Def</a></li>
+							<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#onparalleltransitionfn" class="tsd-kind-icon">On<wbr>Parallel<wbr>Transition<wbr>Fn</a></li>
 							<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#ontransitionfn" class="tsd-kind-icon">On<wbr>Transition<wbr>Fn</a></li>
 							<li class="tsd-kind-type-alias"><a href="globals.html#sendfn" class="tsd-kind-icon">Send<wbr>Fn</a></li>
 							<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#updatepartialdef" class="tsd-kind-icon">Update<wbr>Partial<wbr>Def</a></li>
@@ -2906,6 +2917,7 @@ send&lt;DoEvent&gt;('DO_SOMETHING', {value: 'a value'});
 							<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#initialstatename" class="tsd-kind-icon">initial<wbr>State<wbr>Name</a></li>
 							<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#interpret" class="tsd-kind-icon">interpret</a></li>
 							<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#makeservice" class="tsd-kind-icon">make<wbr>Service</a></li>
+							<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#parallelize" class="tsd-kind-icon">parallelize</a></li>
 							<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#rebuildactivestates" class="tsd-kind-icon">rebuild<wbr>Active<wbr>States</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#resolvepath" class="tsd-kind-icon">resolve<wbr>Path</a></li>
 							<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#updatecontext" class="tsd-kind-icon">update<wbr>Context</a></li>
@@ -2919,40 +2931,40 @@ send&lt;DoEvent&gt;('DO_SOMETHING', {value: 'a value'});
 			<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
 				<a name="childstatesdef" class="tsd-anchor"></a>
 				<h3>Child<wbr>States<wbr>Def</h3>
-				<div class="tsd-signature tsd-kind-icon">Child<wbr>States<wbr>Def&lt;ContextType&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
+				<div class="tsd-signature tsd-kind-icon">Child<wbr>States<wbr>Def&lt;TContext&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/types.ts#L48">types.ts:48</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/e389fb0/src/types.ts#L54">types.ts:54</a></li>
 					</ul>
 				</aside>
 				<h4 class="tsd-type-parameters-title">Type parameters</h4>
 				<ul class="tsd-type-parameters">
 					<li>
-						<h4>ContextType</h4>
+						<h4>TContext</h4>
 					</li>
 				</ul>
 				<div class="tsd-type-declaration">
 					<h4>Type declaration</h4>
 					<ul class="tsd-parameters">
 						<li class="tsd-parameter-index-signature">
-							<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><a href="interfaces/statedef.html" class="tsd-signature-type">StateDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span></h5>
+							<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><a href="interfaces/statedef.html" class="tsd-signature-type">StateDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span></h5>
 						</li>
 					</ul>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
-				<a name="ontransitionfn" class="tsd-anchor"></a>
-				<h3>On<wbr>Transition<wbr>Fn</h3>
-				<div class="tsd-signature tsd-kind-icon">On<wbr>Transition<wbr>Fn&lt;ContextType&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
+				<a name="onparalleltransitionfn" class="tsd-anchor"></a>
+				<h3>On<wbr>Parallel<wbr>Transition<wbr>Fn</h3>
+				<div class="tsd-signature tsd-kind-icon">On<wbr>Parallel<wbr>Transition<wbr>Fn&lt;TContext&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TContext</span>, paths<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/types.ts#L69">types.ts:69</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/e389fb0/src/types.ts#L81">types.ts:81</a></li>
 					</ul>
 				</aside>
 				<h4 class="tsd-type-parameters-title">Type parameters</h4>
 				<ul class="tsd-type-parameters">
 					<li>
-						<h4>ContextType</h4>
+						<h4>TContext</h4>
 					</li>
 				</ul>
 				<div class="tsd-type-declaration">
@@ -2960,14 +2972,54 @@ send&lt;DoEvent&gt;('DO_SOMETHING', {value: 'a value'});
 					<ul class="tsd-parameters">
 						<li class="tsd-parameter-signature">
 							<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
-								<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TContext</span>, paths<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 							</ul>
 							<ul class="tsd-descriptions">
 								<li class="tsd-description">
 									<h4 class="tsd-parameters-title">Parameters</h4>
 									<ul class="tsd-parameters">
 										<li>
-											<h5>ctx: <span class="tsd-signature-type">ContextType</span></h5>
+											<h5>ctx: <span class="tsd-signature-type">TContext</span></h5>
+										</li>
+										<li>
+											<h5>paths: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+										</li>
+									</ul>
+									<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
+				<a name="ontransitionfn" class="tsd-anchor"></a>
+				<h3>On<wbr>Transition<wbr>Fn</h3>
+				<div class="tsd-signature tsd-kind-icon">On<wbr>Transition<wbr>Fn&lt;TContext&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TContext</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/e389fb0/src/types.ts#L80">types.ts:80</a></li>
+					</ul>
+				</aside>
+				<h4 class="tsd-type-parameters-title">Type parameters</h4>
+				<ul class="tsd-type-parameters">
+					<li>
+						<h4>TContext</h4>
+					</li>
+				</ul>
+				<div class="tsd-type-declaration">
+					<h4>Type declaration</h4>
+					<ul class="tsd-parameters">
+						<li class="tsd-parameter-signature">
+							<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
+								<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TContext</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+							</ul>
+							<ul class="tsd-descriptions">
+								<li class="tsd-description">
+									<h4 class="tsd-parameters-title">Parameters</h4>
+									<ul class="tsd-parameters">
+										<li>
+											<h5>ctx: <span class="tsd-signature-type">TContext</span></h5>
 										</li>
 										<li>
 											<h5>path: <span class="tsd-signature-type">string</span></h5>
@@ -2983,10 +3035,10 @@ send&lt;DoEvent&gt;('DO_SOMETHING', {value: 'a value'});
 			<section class="tsd-panel tsd-member tsd-kind-type-alias">
 				<a name="sendfn" class="tsd-anchor"></a>
 				<h3>Send<wbr>Fn</h3>
-				<div class="tsd-signature tsd-kind-icon">Send<wbr>Fn<span class="tsd-signature-symbol">:</span> &lt;EventType&gt;<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, event<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
+				<div class="tsd-signature tsd-kind-icon">Send<wbr>Fn<span class="tsd-signature-symbol">:</span> &lt;TPayload&gt;<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, payload<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TPayload</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TPayload</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/types.ts#L68">types.ts:68</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/e389fb0/src/types.ts#L78">types.ts:78</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-type-declaration">
@@ -2994,14 +3046,14 @@ send&lt;DoEvent&gt;('DO_SOMETHING', {value: 'a value'});
 					<ul class="tsd-parameters">
 						<li class="tsd-parameter-signature">
 							<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-has-type-parameter">
-								<li class="tsd-signature tsd-kind-icon">&lt;EventType&gt;<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, event<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								<li class="tsd-signature tsd-kind-icon">&lt;TPayload&gt;<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, payload<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TPayload</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TPayload</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 							</ul>
 							<ul class="tsd-descriptions">
 								<li class="tsd-description">
 									<h4 class="tsd-type-parameters-title">Type parameters</h4>
 									<ul class="tsd-type-parameters">
 										<li>
-											<h4>EventType</h4>
+											<h4>TPayload</h4>
 										</li>
 									</ul>
 									<h4 class="tsd-parameters-title">Parameters</h4>
@@ -3010,7 +3062,7 @@ send&lt;DoEvent&gt;('DO_SOMETHING', {value: 'a value'});
 											<h5>name: <span class="tsd-signature-type">string</span></h5>
 										</li>
 										<li>
-											<h5><span class="tsd-flag ts-flagOptional">Optional</span> event: <span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">&gt;</span></h5>
+											<h5><span class="tsd-flag ts-flagOptional">Optional</span> payload: <span class="tsd-signature-type">TPayload</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TPayload</span><span class="tsd-signature-symbol">&gt;</span></h5>
 										</li>
 									</ul>
 									<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -3023,19 +3075,19 @@ send&lt;DoEvent&gt;('DO_SOMETHING', {value: 'a value'});
 			<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
 				<a name="updatepartialdef" class="tsd-anchor"></a>
 				<h3>Update<wbr>Partial<wbr>Def</h3>
-				<div class="tsd-signature tsd-kind-icon">Update<wbr>Partial<wbr>Def&lt;ContextType, EventType&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
+				<div class="tsd-signature tsd-kind-icon">Update<wbr>Partial<wbr>Def&lt;TContext, TPayload&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/types.ts#L1">types.ts:1</a></li>
+						<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/e389fb0/src/types.ts#L3">types.ts:3</a></li>
 					</ul>
 				</aside>
 				<h4 class="tsd-type-parameters-title">Type parameters</h4>
 				<ul class="tsd-type-parameters">
 					<li>
-						<h4>ContextType</h4>
+						<h4>TContext</h4>
 					</li>
 					<li>
-						<h4>EventType</h4>
+						<h4>TPayload</h4>
 					</li>
 				</ul>
 				<div class="tsd-type-declaration">
@@ -3051,25 +3103,25 @@ send&lt;DoEvent&gt;('DO_SOMETHING', {value: 'a value'});
 				<a name="deferrednextevent" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> Deferred<wbr>Next<wbr>Event</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
-					<li class="tsd-signature tsd-kind-icon">Deferred<wbr>Next<wbr>Event&lt;ContextType, EventType, NextEventType&gt;<span class="tsd-signature-symbol">(</span>nextEventName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, deferredFn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, payload<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">NextEventType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/eventdef.html" class="tsd-signature-type">EventDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">Deferred<wbr>Next<wbr>Event&lt;TContext, TPayload, TNextPayload&gt;<span class="tsd-signature-symbol">(</span>nextEventName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, deferredFn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TContext</span>, payload<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TPayload</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TNextPayload</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/eventdef.html" class="tsd-signature-type">EventDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TPayload</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/fns.ts#L12">fns.ts:12</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/e389fb0/src/fns.ts#L17">fns.ts:17</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
 						<ul class="tsd-type-parameters">
 							<li>
-								<h4>ContextType</h4>
+								<h4>TContext</h4>
 							</li>
 							<li>
-								<h4>EventType</h4>
+								<h4>TPayload</h4>
 							</li>
 							<li>
-								<h4>NextEventType</h4>
+								<h4>TNextPayload</h4>
 							</li>
 						</ul>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -3078,31 +3130,31 @@ send&lt;DoEvent&gt;('DO_SOMETHING', {value: 'a value'});
 								<h5>nextEventName: <span class="tsd-signature-type">string</span></h5>
 							</li>
 							<li>
-								<h5>deferredFn: <span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, payload<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">NextEventType</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5>deferredFn: <span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TContext</span>, payload<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TPayload</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TNextPayload</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								<ul class="tsd-parameters">
 									<li class="tsd-parameter-signature">
 										<ul class="tsd-signatures tsd-kind-type-literal">
-											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, payload<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">NextEventType</span><span class="tsd-signature-symbol">&gt;</span></li>
+											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TContext</span>, payload<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TPayload</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TNextPayload</span><span class="tsd-signature-symbol">&gt;</span></li>
 										</ul>
 										<ul class="tsd-descriptions">
 											<li class="tsd-description">
 												<h4 class="tsd-parameters-title">Parameters</h4>
 												<ul class="tsd-parameters">
 													<li>
-														<h5>ctx: <span class="tsd-signature-type">ContextType</span></h5>
+														<h5>ctx: <span class="tsd-signature-type">TContext</span></h5>
 													</li>
 													<li>
-														<h5>payload: <span class="tsd-signature-type">EventType</span></h5>
+														<h5>payload: <span class="tsd-signature-type">TPayload</span></h5>
 													</li>
 												</ul>
-												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">NextEventType</span><span class="tsd-signature-symbol">&gt;</span></h4>
+												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TNextPayload</span><span class="tsd-signature-symbol">&gt;</span></h4>
 											</li>
 										</ul>
 									</li>
 								</ul>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <a href="interfaces/eventdef.html" class="tsd-signature-type">EventDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <a href="interfaces/eventdef.html" class="tsd-signature-type">EventDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TPayload</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -3110,34 +3162,34 @@ send&lt;DoEvent&gt;('DO_SOMETHING', {value: 'a value'});
 				<a name="event" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> Event</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
-					<li class="tsd-signature tsd-kind-icon">Event&lt;ContextType, EventType, NextEventType&gt;<span class="tsd-signature-symbol">(</span>def<span class="tsd-signature-symbol">: </span><a href="interfaces/eventdef.html" class="tsd-signature-type">EventDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">NextEventType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/eventdef.html" class="tsd-signature-type">EventDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">NextEventType</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">Event&lt;TContext, TPayload, TNextPayload&gt;<span class="tsd-signature-symbol">(</span>def<span class="tsd-signature-symbol">: </span><a href="interfaces/eventdef.html" class="tsd-signature-type">EventDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TPayload</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TNextPayload</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/eventdef.html" class="tsd-signature-type">EventDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TPayload</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TNextPayload</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/fns.ts#L7">fns.ts:7</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/e389fb0/src/fns.ts#L12">fns.ts:12</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
 						<ul class="tsd-type-parameters">
 							<li>
-								<h4>ContextType</h4>
+								<h4>TContext</h4>
 							</li>
 							<li>
-								<h4>EventType</h4>
+								<h4>TPayload</h4>
 							</li>
 							<li>
-								<h4>NextEventType</h4>
+								<h4>TNextPayload</h4>
 							</li>
 						</ul>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>def: <a href="interfaces/eventdef.html" class="tsd-signature-type">EventDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">NextEventType</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5>def: <a href="interfaces/eventdef.html" class="tsd-signature-type">EventDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TPayload</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TNextPayload</span><span class="tsd-signature-symbol">&gt;</span></h5>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <a href="interfaces/eventdef.html" class="tsd-signature-type">EventDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">NextEventType</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <a href="interfaces/eventdef.html" class="tsd-signature-type">EventDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TPayload</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TNextPayload</span><span class="tsd-signature-symbol">&gt;</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -3145,28 +3197,28 @@ send&lt;DoEvent&gt;('DO_SOMETHING', {value: 'a value'});
 				<a name="machine" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> Machine</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
-					<li class="tsd-signature tsd-kind-icon">Machine&lt;ContextType&gt;<span class="tsd-signature-symbol">(</span>def<span class="tsd-signature-symbol">: </span><a href="interfaces/machinedef.html" class="tsd-signature-type">MachineDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/machinedef.html" class="tsd-signature-type">MachineDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">Machine&lt;TContext&gt;<span class="tsd-signature-symbol">(</span>def<span class="tsd-signature-symbol">: </span><a href="interfaces/machinedef.html" class="tsd-signature-type">MachineDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/machinedef.html" class="tsd-signature-type">MachineDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/fns.ts#L10">fns.ts:10</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/e389fb0/src/fns.ts#L15">fns.ts:15</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
 						<ul class="tsd-type-parameters">
 							<li>
-								<h4>ContextType</h4>
+								<h4>TContext</h4>
 							</li>
 						</ul>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>def: <a href="interfaces/machinedef.html" class="tsd-signature-type">MachineDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5>def: <a href="interfaces/machinedef.html" class="tsd-signature-type">MachineDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span></h5>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <a href="interfaces/machinedef.html" class="tsd-signature-type">MachineDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <a href="interfaces/machinedef.html" class="tsd-signature-type">MachineDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -3174,72 +3226,72 @@ send&lt;DoEvent&gt;('DO_SOMETHING', {value: 'a value'});
 				<a name="next" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> Next</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
-					<li class="tsd-signature tsd-kind-icon">Next&lt;ContextType, EventType, NextEventType&gt;<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, eventA<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">NextEventType</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, eventA<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">NextEventType</span><span class="tsd-signature-symbol">]</span></li>
+					<li class="tsd-signature tsd-kind-icon">Next&lt;TContext, TPayload, TNextPayload&gt;<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TContext</span>, inputPayload<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TPayload</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TNextPayload</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TContext</span>, inputPayload<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TPayload</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TNextPayload</span><span class="tsd-signature-symbol">]</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/fns.ts#L8">fns.ts:8</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/e389fb0/src/fns.ts#L13">fns.ts:13</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
 						<ul class="tsd-type-parameters">
 							<li>
-								<h4>ContextType</h4>
+								<h4>TContext</h4>
 							</li>
 							<li>
-								<h4>EventType</h4>
+								<h4>TPayload</h4>
 							</li>
 							<li>
-								<h4>NextEventType</h4>
+								<h4>TNextPayload</h4>
 							</li>
 						</ul>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>fn: <span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, eventA<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">NextEventType</span><span class="tsd-signature-symbol">]</span></h5>
+								<h5>fn: <span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TContext</span>, inputPayload<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TPayload</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TNextPayload</span><span class="tsd-signature-symbol">]</span></h5>
 								<ul class="tsd-parameters">
 									<li class="tsd-parameter-signature">
 										<ul class="tsd-signatures tsd-kind-type-literal">
-											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, eventA<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">NextEventType</span><span class="tsd-signature-symbol">]</span></li>
+											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TContext</span>, inputPayload<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TPayload</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TNextPayload</span><span class="tsd-signature-symbol">]</span></li>
 										</ul>
 										<ul class="tsd-descriptions">
 											<li class="tsd-description">
 												<h4 class="tsd-parameters-title">Parameters</h4>
 												<ul class="tsd-parameters">
 													<li>
-														<h5>ctx: <span class="tsd-signature-type">ContextType</span></h5>
+														<h5>ctx: <span class="tsd-signature-type">TContext</span></h5>
 													</li>
 													<li>
-														<h5>eventA: <span class="tsd-signature-type">EventType</span></h5>
+														<h5>inputPayload: <span class="tsd-signature-type">TPayload</span></h5>
 													</li>
 												</ul>
-												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">NextEventType</span><span class="tsd-signature-symbol">]</span></h4>
+												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TNextPayload</span><span class="tsd-signature-symbol">]</span></h4>
 											</li>
 										</ul>
 									</li>
 								</ul>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, eventA<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">NextEventType</span><span class="tsd-signature-symbol">]</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TContext</span>, inputPayload<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TPayload</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TNextPayload</span><span class="tsd-signature-symbol">]</span></h4>
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-signature">
 								<ul class="tsd-signatures tsd-kind-type-literal">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, eventA<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EventType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">NextEventType</span><span class="tsd-signature-symbol">]</span></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TContext</span>, inputPayload<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TPayload</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TNextPayload</span><span class="tsd-signature-symbol">]</span></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
 										<h4 class="tsd-parameters-title">Parameters</h4>
 										<ul class="tsd-parameters">
 											<li>
-												<h5>ctx: <span class="tsd-signature-type">ContextType</span></h5>
+												<h5>ctx: <span class="tsd-signature-type">TContext</span></h5>
 											</li>
 											<li>
-												<h5>eventA: <span class="tsd-signature-type">EventType</span></h5>
+												<h5>inputPayload: <span class="tsd-signature-type">TPayload</span></h5>
 											</li>
 										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">NextEventType</span><span class="tsd-signature-symbol">]</span></h4>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TNextPayload</span><span class="tsd-signature-symbol">]</span></h4>
 									</li>
 								</ul>
 							</li>
@@ -3251,28 +3303,28 @@ send&lt;DoEvent&gt;('DO_SOMETHING', {value: 'a value'});
 				<a name="state" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> State</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
-					<li class="tsd-signature tsd-kind-icon">State&lt;ContextType&gt;<span class="tsd-signature-symbol">(</span>def<span class="tsd-signature-symbol">: </span><a href="interfaces/statedef.html" class="tsd-signature-type">StateDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/statedef.html" class="tsd-signature-type">StateDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">State&lt;TContext&gt;<span class="tsd-signature-symbol">(</span>def<span class="tsd-signature-symbol">: </span><a href="interfaces/statedef.html" class="tsd-signature-type">StateDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/statedef.html" class="tsd-signature-type">StateDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/fns.ts#L9">fns.ts:9</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/e389fb0/src/fns.ts#L14">fns.ts:14</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
 						<ul class="tsd-type-parameters">
 							<li>
-								<h4>ContextType</h4>
+								<h4>TContext</h4>
 							</li>
 						</ul>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>def: <a href="interfaces/statedef.html" class="tsd-signature-type">StateDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5>def: <a href="interfaces/statedef.html" class="tsd-signature-type">StateDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span></h5>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <a href="interfaces/statedef.html" class="tsd-signature-type">StateDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <a href="interfaces/statedef.html" class="tsd-signature-type">StateDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -3280,34 +3332,34 @@ send&lt;DoEvent&gt;('DO_SOMETHING', {value: 'a value'});
 				<a name="findinitialchildstate" class="tsd-anchor"></a>
 				<h3>find<wbr>Initial<wbr>Child<wbr>State</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
-					<li class="tsd-signature tsd-kind-icon">find<wbr>Initial<wbr>Child<wbr>State&lt;ContextType&gt;<span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, statePaths<span class="tsd-signature-symbol">: </span><a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span>, parent<span class="tsd-signature-symbol">: </span><a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
+					<li class="tsd-signature tsd-kind-icon">find<wbr>Initial<wbr>Child<wbr>State&lt;TContext&gt;<span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TContext</span>, statePaths<span class="tsd-signature-symbol">: </span><a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span>, parent<span class="tsd-signature-symbol">: </span><a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/lib.ts#L27">lib.ts:27</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/e389fb0/src/lib.ts#L27">lib.ts:27</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
 						<ul class="tsd-type-parameters">
 							<li>
-								<h4>ContextType</h4>
+								<h4>TContext</h4>
 							</li>
 						</ul>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>ctx: <span class="tsd-signature-type">ContextType</span></h5>
+								<h5>ctx: <span class="tsd-signature-type">TContext</span></h5>
 							</li>
 							<li>
-								<h5>statePaths: <a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h5>
+								<h5>statePaths: <a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h5>
 							</li>
 							<li>
-								<h5>parent: <a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5>parent: <a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span></h5>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h4>
+						<h4 class="tsd-returns-title">Returns <a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -3315,25 +3367,25 @@ send&lt;DoEvent&gt;('DO_SOMETHING', {value: 'a value'});
 				<a name="haschildstates" class="tsd-anchor"></a>
 				<h3>has<wbr>Child<wbr>States</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
-					<li class="tsd-signature tsd-kind-icon">has<wbr>Child<wbr>States&lt;ContextType&gt;<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="interfaces/statedef.html" class="tsd-signature-type">StateDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					<li class="tsd-signature tsd-kind-icon">has<wbr>Child<wbr>States&lt;TContext&gt;<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="interfaces/statedef.html" class="tsd-signature-type">StateDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/lib.ts#L55">lib.ts:55</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/e389fb0/src/lib.ts#L55">lib.ts:55</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
 						<ul class="tsd-type-parameters">
 							<li>
-								<h4>ContextType</h4>
+								<h4>TContext</h4>
 							</li>
 						</ul>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>state: <a href="interfaces/statedef.html" class="tsd-signature-type">StateDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5>state: <a href="interfaces/statedef.html" class="tsd-signature-type">StateDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span></h5>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -3344,28 +3396,28 @@ send&lt;DoEvent&gt;('DO_SOMETHING', {value: 'a value'});
 				<a name="initialstatename" class="tsd-anchor"></a>
 				<h3>initial<wbr>State<wbr>Name</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
-					<li class="tsd-signature tsd-kind-icon">initial<wbr>State<wbr>Name&lt;ContextType&gt;<span class="tsd-signature-symbol">(</span>initial<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span>, ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					<li class="tsd-signature tsd-kind-icon">initial<wbr>State<wbr>Name&lt;TContext&gt;<span class="tsd-signature-symbol">(</span>initial<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span>, ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/lib.ts#L80">lib.ts:80</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/e389fb0/src/lib.ts#L80">lib.ts:80</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
 						<ul class="tsd-type-parameters">
 							<li>
-								<h4>ContextType</h4>
+								<h4>TContext</h4>
 							</li>
 						</ul>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>initial: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span></h5>
+								<h5>initial: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span></h5>
 							</li>
 							<li>
-								<h5>ctx: <span class="tsd-signature-type">ContextType</span></h5>
+								<h5>ctx: <span class="tsd-signature-type">TContext</span></h5>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -3376,13 +3428,13 @@ send&lt;DoEvent&gt;('DO_SOMETHING', {value: 'a value'});
 				<a name="interpret" class="tsd-anchor"></a>
 				<h3>interpret</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
-					<li class="tsd-signature tsd-kind-icon">interpret&lt;ContextType&gt;<span class="tsd-signature-symbol">(</span>machineDef<span class="tsd-signature-symbol">: </span><a href="interfaces/machinedef.html" class="tsd-signature-type">MachineDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/service.html" class="tsd-signature-type">Service</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">interpret&lt;TContext&gt;<span class="tsd-signature-symbol">(</span>machineDef<span class="tsd-signature-symbol">: </span><a href="interfaces/machinedef.html" class="tsd-signature-type">MachineDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/service.html" class="tsd-signature-type">Service</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/index.ts#L22">index.ts:22</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/e389fb0/src/index.ts#L22">index.ts:22</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3393,16 +3445,16 @@ send&lt;DoEvent&gt;('DO_SOMETHING', {value: 'a value'});
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
 						<ul class="tsd-type-parameters">
 							<li>
-								<h4>ContextType</h4>
+								<h4>TContext</h4>
 							</li>
 						</ul>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>machineDef: <a href="interfaces/machinedef.html" class="tsd-signature-type">MachineDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5>machineDef: <a href="interfaces/machinedef.html" class="tsd-signature-type">MachineDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span></h5>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <a href="interfaces/service.html" class="tsd-signature-type">Service</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <a href="interfaces/service.html" class="tsd-signature-type">Service</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -3410,34 +3462,63 @@ send&lt;DoEvent&gt;('DO_SOMETHING', {value: 'a value'});
 				<a name="makeservice" class="tsd-anchor"></a>
 				<h3>make<wbr>Service</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
-					<li class="tsd-signature tsd-kind-icon">make<wbr>Service&lt;ContextType&gt;<span class="tsd-signature-symbol">(</span>stateConfigs<span class="tsd-signature-symbol">: </span><a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span>, initialContext<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, initialState<span class="tsd-signature-symbol">: </span><a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/service.html" class="tsd-signature-type">Service</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">make<wbr>Service&lt;TContext&gt;<span class="tsd-signature-symbol">(</span>stateConfigs<span class="tsd-signature-symbol">: </span><a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span>, initialContext<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TContext</span>, initialState<span class="tsd-signature-symbol">: </span><a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/service.html" class="tsd-signature-type">Service</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/index.ts#L73">index.ts:73</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/e389fb0/src/index.ts#L74">index.ts:74</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
 						<ul class="tsd-type-parameters">
 							<li>
-								<h4>ContextType</h4>
+								<h4>TContext</h4>
 							</li>
 						</ul>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>stateConfigs: <a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h5>
+								<h5>stateConfigs: <a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h5>
 							</li>
 							<li>
-								<h5>initialContext: <span class="tsd-signature-type">ContextType</span></h5>
+								<h5>initialContext: <span class="tsd-signature-type">TContext</span></h5>
 							</li>
 							<li>
-								<h5>initialState: <a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5>initialState: <a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span></h5>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <a href="interfaces/service.html" class="tsd-signature-type">Service</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <a href="interfaces/service.html" class="tsd-signature-type">Service</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-has-type-parameter">
+				<a name="parallelize" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagConst">Const</span> parallelize</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
+					<li class="tsd-signature tsd-kind-icon">parallelize&lt;TContext&gt;<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>services<span class="tsd-signature-symbol">: </span><a href="interfaces/service.html" class="tsd-signature-type">Service</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/parallelservice.html" class="tsd-signature-type">ParallelService</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/e389fb0/src/fns.ts#L31">fns.ts:31</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-type-parameters-title">Type parameters</h4>
+						<ul class="tsd-type-parameters">
+							<li>
+								<h4>TContext</h4>
+							</li>
+						</ul>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>services: <a href="interfaces/service.html" class="tsd-signature-type">Service</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="interfaces/parallelservice.html" class="tsd-signature-type">ParallelService</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -3445,34 +3526,34 @@ send&lt;DoEvent&gt;('DO_SOMETHING', {value: 'a value'});
 				<a name="rebuildactivestates" class="tsd-anchor"></a>
 				<h3>rebuild<wbr>Active<wbr>States</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
-					<li class="tsd-signature tsd-kind-icon">rebuild<wbr>Active<wbr>States&lt;ContextType&gt;<span class="tsd-signature-symbol">(</span>currentState<span class="tsd-signature-symbol">: </span><a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span>, previousActiveStates<span class="tsd-signature-symbol">: </span><a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span>, statePaths<span class="tsd-signature-symbol">: </span><a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></li>
+					<li class="tsd-signature tsd-kind-icon">rebuild<wbr>Active<wbr>States&lt;TContext&gt;<span class="tsd-signature-symbol">(</span>currentState<span class="tsd-signature-symbol">: </span><a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span>, previousActiveStates<span class="tsd-signature-symbol">: </span><a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span>, statePaths<span class="tsd-signature-symbol">: </span><a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/lib.ts#L7">lib.ts:7</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/e389fb0/src/lib.ts#L7">lib.ts:7</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
 						<ul class="tsd-type-parameters">
 							<li>
-								<h4>ContextType</h4>
+								<h4>TContext</h4>
 							</li>
 						</ul>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>currentState: <a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5>currentState: <a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span></h5>
 							</li>
 							<li>
-								<h5>previousActiveStates: <a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h5>
+								<h5>previousActiveStates: <a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h5>
 							</li>
 							<li>
-								<h5>statePaths: <a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h5>
+								<h5>statePaths: <a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h5>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h4>
+						<h4 class="tsd-returns-title">Returns <a href="interfaces/stateconfig.html" class="tsd-signature-type">StateConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -3486,7 +3567,7 @@ send&lt;DoEvent&gt;('DO_SOMETHING', {value: 'a value'});
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/lib.ts#L87">lib.ts:87</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/e389fb0/src/lib.ts#L87">lib.ts:87</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -3506,37 +3587,37 @@ send&lt;DoEvent&gt;('DO_SOMETHING', {value: 'a value'});
 				<a name="updatecontext" class="tsd-anchor"></a>
 				<h3>update<wbr>Context</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
-					<li class="tsd-signature tsd-kind-icon">update<wbr>Context&lt;ContextType, EventType&gt;<span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ContextType</span>, def<span class="tsd-signature-symbol">: </span><a href="interfaces/eventdef.html" class="tsd-signature-type">EventDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span>, event<span class="tsd-signature-symbol">?: </span><a href="" class="tsd-signature-type">EventType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ContextType</span></li>
+					<li class="tsd-signature tsd-kind-icon">update<wbr>Context&lt;TContext, TPayload&gt;<span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TContext</span>, def<span class="tsd-signature-symbol">: </span><a href="interfaces/eventdef.html" class="tsd-signature-type">EventDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span>, payload<span class="tsd-signature-symbol">?: </span><a href="" class="tsd-signature-type">TPayload</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">TContext</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/40efef6/src/lib.ts#L59">lib.ts:59</a></li>
+								<li>Defined in <a href="https://github.com/cxstate/cxstate/blob/e389fb0/src/lib.ts#L59">lib.ts:59</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-type-parameters-title">Type parameters</h4>
 						<ul class="tsd-type-parameters">
 							<li>
-								<h4>ContextType</h4>
+								<h4>TContext</h4>
 							</li>
 							<li>
-								<h4>EventType</h4>
+								<h4>TPayload</h4>
 							</li>
 						</ul>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>ctx: <span class="tsd-signature-type">ContextType</span></h5>
+								<h5>ctx: <span class="tsd-signature-type">TContext</span></h5>
 							</li>
 							<li>
-								<h5>def: <a href="interfaces/eventdef.html" class="tsd-signature-type">EventDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ContextType</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5>def: <a href="interfaces/eventdef.html" class="tsd-signature-type">EventDef</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span></h5>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> event: <a href="" class="tsd-signature-type">EventType</a></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> payload: <a href="" class="tsd-signature-type">TPayload</a></h5>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ContextType</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">TContext</span></h4>
 					</li>
 				</ul>
 			</section>
