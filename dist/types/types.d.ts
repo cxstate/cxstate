@@ -42,15 +42,16 @@ export interface EventDef<TContext, TPayload = any, TNextPayload = any> {
 export interface EventErrorType {
     error: Error;
 }
+export declare type StateActionsDef<TContext> = {
+    [key: string]: string | EventDef<TContext> | EventDef<TContext>[];
+};
 export declare type ChildStatesDef<TContext> = {
     [key: string]: StateDef<TContext>;
 };
 export interface StateDef<TContext> {
     initial?: string | ((ctx: TContext) => string);
     entry?: string | EventDef<TContext> | EventDef<TContext>[];
-    on?: {
-        [key: string]: string | EventDef<TContext> | EventDef<TContext>[];
-    };
+    on?: StateActionsDef<TContext>;
     states?: ChildStatesDef<TContext>;
 }
 export interface StateConfig<TContext> {

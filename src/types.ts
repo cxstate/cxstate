@@ -1,12 +1,12 @@
 // Update
 
 type UpdatePartialDef<TContext, TPayload> = {
-    [P in keyof TContext]?: (ctx: TContext, pl: TPayload) => TContext[P];
+  [P in keyof TContext]?: (ctx: TContext, pl: TPayload) => TContext[P]
 }
 
 // Events
 
-export interface EventDef<TContext, TPayload=any, TNextPayload=any> {
+export interface EventDef<TContext, TPayload = any, TNextPayload = any> {
   /**
    * Optional target path of event. Causes state transition. Can be a relative path.
    * The context must not be changed, otherwise unpredictable behavior might occur.
@@ -42,7 +42,7 @@ export interface EventDef<TContext, TPayload=any, TNextPayload=any> {
    * If event fn is used, a payload transformation is expected that returns next event name and new even payload.
    * Use the helper fn Next<TContext, TPayload, TNextPayload>(...) then for strong typing.
    */
-  next?: string|((ctx: TContext, inputPl: TPayload) => [string, TNextPayload])
+  next?: string | ((ctx: TContext, inputPl: TPayload) => [string, TNextPayload])
 }
 
 export interface EventErrorType {
@@ -51,42 +51,48 @@ export interface EventErrorType {
 
 // States
 
-export type ChildStatesDef<TContext> = { [key: string]: StateDef<TContext> };
+export type StateActionsDef<TContext> = {
+  [key: string]: string | EventDef<TContext> | EventDef<TContext>[]
+}
+
+export type ChildStatesDef<TContext> = {
+  [key: string]: StateDef<TContext>
+}
 
 export interface StateDef<TContext> {
-  initial?: string|((ctx: TContext) => string)
-  entry?: string|EventDef<TContext>|EventDef<TContext>[] // TODO: NOT IMPLEMENTED YET
-  on?: { [key: string]: string|EventDef<TContext>|EventDef<TContext>[] };
+  initial?: string | ((ctx: TContext) => string)
+  entry?: string | EventDef<TContext> | EventDef<TContext>[]
+  on?: StateActionsDef<TContext>
   states?: ChildStatesDef<TContext>
 }
 
 export interface StateConfig<TContext> {
   state: StateDef<TContext>
-  path: {name: string, absolute: string}
+  path: { name: string; absolute: string }
 }
 
 // Machines
 
 export interface MachineDef<TContext> {
   context: TContext
-  initial: string|((ctx: TContext) => string)
+  initial: string | ((ctx: TContext) => string)
   states: ChildStatesDef<TContext>
 }
 
 // Functions
 
-export type SendFn = <TPayload=any>(name: string, payload?: TPayload|Promise<TPayload>) => void;
+export type SendFn = <TPayload = any>(name: string, payload?: TPayload | Promise<TPayload>) => void
 
-export type OnTransitionFn<TContext> = (ctx: TContext, path: string) => void;
-export type OnParallelTransitionFn<TContext> = (ctx: TContext, paths: string[]) => void;
+export type OnTransitionFn<TContext> = (ctx: TContext, path: string) => void
+export type OnParallelTransitionFn<TContext> = (ctx: TContext, paths: string[]) => void
 
 // Services
 
 interface ServiceBase<TContext> {
   context: () => Readonly<TContext>
   send: SendFn
-  matchesOne: (...paths: string[]) => boolean,
-  matchesNone: (...paths: string[]) => boolean,
+  matchesOne: (...paths: string[]) => boolean
+  matchesNone: (...paths: string[]) => boolean
 }
 
 export interface Service<TContext> extends ServiceBase<TContext> {
